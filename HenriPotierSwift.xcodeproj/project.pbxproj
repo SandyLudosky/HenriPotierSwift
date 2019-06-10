@@ -14,6 +14,19 @@
 		26A1C64B22AEBACE001AD4BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26A1C64922AEBACE001AD4BA /* LaunchScreen.storyboard */; };
 		26A1C65622AEBACE001AD4BA /* HenriPotierSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C65522AEBACE001AD4BA /* HenriPotierSwiftTests.swift */; };
 		26A1C66122AEBACE001AD4BA /* HenriPotierSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C66022AEBACE001AD4BA /* HenriPotierSwiftUITests.swift */; };
+		26A1C67522AEBD35001AD4BA /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C67122AEBD34001AD4BA /* JSONParser.swift */; };
+		26A1C67622AEBD35001AD4BA /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C67222AEBD35001AD4BA /* APIService.swift */; };
+		26A1C67722AEBD35001AD4BA /* APIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C67322AEBD35001AD4BA /* APIProtocol.swift */; };
+		26A1C67822AEBD35001AD4BA /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C67422AEBD35001AD4BA /* APIClient.swift */; };
+		26A1C67E22AEBD89001AD4BA /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C67A22AEBD89001AD4BA /* Protocols.swift */; };
+		26A1C67F22AEBD89001AD4BA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C67B22AEBD89001AD4BA /* Extensions.swift */; };
+		26A1C68022AEBD89001AD4BA /* Enums+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C67C22AEBD89001AD4BA /* Enums+Error.swift */; };
+		26A1C68122AEBD89001AD4BA /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C67D22AEBD89001AD4BA /* Enums.swift */; };
+		26A1C68422AEBEDC001AD4BA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C68322AEBEDC001AD4BA /* Model.swift */; };
+		26A1C68622AEBF99001AD4BA /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C68522AEBF99001AD4BA /* Book.swift */; };
+		26A1C68922AEC14C001AD4BA /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C68822AEC14C001AD4BA /* BookViewModel.swift */; };
+		26A1C68B22AEC182001AD4BA /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C68A22AEC182001AD4BA /* CartViewModel.swift */; };
+		26A1C68D22AEC1AB001AD4BA /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C68C22AEC1AB001AD4BA /* Offer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +60,19 @@
 		26A1C65C22AEBACE001AD4BA /* HenriPotierSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HenriPotierSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26A1C66022AEBACE001AD4BA /* HenriPotierSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HenriPotierSwiftUITests.swift; sourceTree = "<group>"; };
 		26A1C66222AEBACE001AD4BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26A1C67122AEBD34001AD4BA /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
+		26A1C67222AEBD35001AD4BA /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		26A1C67322AEBD35001AD4BA /* APIProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIProtocol.swift; sourceTree = "<group>"; };
+		26A1C67422AEBD35001AD4BA /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		26A1C67A22AEBD89001AD4BA /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		26A1C67B22AEBD89001AD4BA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		26A1C67C22AEBD89001AD4BA /* Enums+Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Enums+Error.swift"; sourceTree = "<group>"; };
+		26A1C67D22AEBD89001AD4BA /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		26A1C68322AEBEDC001AD4BA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		26A1C68522AEBF99001AD4BA /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		26A1C68822AEC14C001AD4BA /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
+		26A1C68A22AEC182001AD4BA /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		26A1C68C22AEC1AB001AD4BA /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +123,9 @@
 		26A1C63F22AEBACD001AD4BA /* HenriPotierSwift */ = {
 			isa = PBXGroup;
 			children = (
+				26A1C68722AEC13C001AD4BA /* ViewModels */,
+				26A1C68222AEBEB7001AD4BA /* Model */,
+				26A1C67922AEBD63001AD4BA /* Common */,
 				26A1C66E22AEBC6E001AD4BA /* Network */,
 				26A1C64022AEBACD001AD4BA /* AppDelegate.swift */,
 				26A1C64222AEBACD001AD4BA /* ViewController.swift */,
@@ -129,8 +158,42 @@
 		26A1C66E22AEBC6E001AD4BA /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				26A1C67422AEBD35001AD4BA /* APIClient.swift */,
+				26A1C67322AEBD35001AD4BA /* APIProtocol.swift */,
+				26A1C67222AEBD35001AD4BA /* APIService.swift */,
+				26A1C67122AEBD34001AD4BA /* JSONParser.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		26A1C67922AEBD63001AD4BA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				26A1C67D22AEBD89001AD4BA /* Enums.swift */,
+				26A1C67C22AEBD89001AD4BA /* Enums+Error.swift */,
+				26A1C67B22AEBD89001AD4BA /* Extensions.swift */,
+				26A1C67A22AEBD89001AD4BA /* Protocols.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		26A1C68222AEBEB7001AD4BA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				26A1C68322AEBEDC001AD4BA /* Model.swift */,
+				26A1C68522AEBF99001AD4BA /* Book.swift */,
+				26A1C68C22AEC1AB001AD4BA /* Offer.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		26A1C68722AEC13C001AD4BA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				26A1C68822AEC14C001AD4BA /* BookViewModel.swift */,
+				26A1C68A22AEC182001AD4BA /* CartViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,8 +327,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26A1C68922AEC14C001AD4BA /* BookViewModel.swift in Sources */,
 				26A1C64322AEBACD001AD4BA /* ViewController.swift in Sources */,
+				26A1C68B22AEC182001AD4BA /* CartViewModel.swift in Sources */,
+				26A1C68622AEBF99001AD4BA /* Book.swift in Sources */,
 				26A1C64122AEBACD001AD4BA /* AppDelegate.swift in Sources */,
+				26A1C68122AEBD89001AD4BA /* Enums.swift in Sources */,
+				26A1C67E22AEBD89001AD4BA /* Protocols.swift in Sources */,
+				26A1C67F22AEBD89001AD4BA /* Extensions.swift in Sources */,
+				26A1C67622AEBD35001AD4BA /* APIService.swift in Sources */,
+				26A1C68D22AEC1AB001AD4BA /* Offer.swift in Sources */,
+				26A1C68022AEBD89001AD4BA /* Enums+Error.swift in Sources */,
+				26A1C67722AEBD35001AD4BA /* APIProtocol.swift in Sources */,
+				26A1C68422AEBEDC001AD4BA /* Model.swift in Sources */,
+				26A1C67522AEBD35001AD4BA /* JSONParser.swift in Sources */,
+				26A1C67822AEBD35001AD4BA /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
