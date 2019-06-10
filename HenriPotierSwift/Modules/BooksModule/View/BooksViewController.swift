@@ -13,7 +13,7 @@ class BooksViewController: BaseViewController {
     @IBAction func addToCartAction(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "goToCart", sender: self)
     }
-
+    var dataSource: BooksDataSource?
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +21,9 @@ class BooksViewController: BaseViewController {
     }
     
     override func configureView() {
-       // tableView.dataSource = dataSource
-        tableView.delegate = self
-       // tableView.register(UINib(nibName: "BookCell", bundle: nil), forCellReuseIdentifier: BookCell.identifier)
+       tableView.dataSource = dataSource
+       tableView.delegate = self
+       tableView.register(UINib(nibName: "BookCell", bundle: nil), forCellReuseIdentifier: BookCell.identifier)
         
     }
   
@@ -31,9 +31,10 @@ class BooksViewController: BaseViewController {
         interactor?.fetch(with: APIServiceRequest(with: .book))
     }
     
-    override  func success<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol {
-        guard let booksViewModel = viewModel as? BooksViewModel else { return }
-       // self.dataSource.update(with: booksViewModel.items)
+    override func success<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol {
+        guard let booksViewModel = viewModel as? BooksViewModel,
+              let books = booksViewModel.items else { return }
+        self.dataSource?.update(with: books)
         self.tableView.reloadData()
     }
     
@@ -45,8 +46,8 @@ class BooksViewController: BaseViewController {
 //MARK - UITableViewDelegate
 extension BooksViewController: UITableViewDelegate  {
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       // guard let cell = tableView.cellForRow(at: indexPath) as? BookCell else { return }
-       // cell.toggle()
+        guard let cell = tableView.cellForRow(at: indexPath) as? BookCell else { return }
+        cell.toggle()
         tableView.reloadData()
     }
 }
