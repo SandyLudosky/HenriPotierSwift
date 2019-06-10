@@ -29,6 +29,10 @@
 		26A1C68D22AEC1AB001AD4BA /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C68C22AEC1AB001AD4BA /* Offer.swift */; };
 		26A1C69122AEC9DE001AD4BA /* BaseDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C69022AEC9DE001AD4BA /* BaseDataWorker.swift */; };
 		26A1C69322AECA97001AD4BA /* BookDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C69222AECA97001AD4BA /* BookDataWorker.swift */; };
+		26A1C69B22AECDF2001AD4BA /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C69A22AECDF1001AD4BA /* BooksViewController.swift */; };
+		26A1C69D22AECE2F001AD4BA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C69C22AECE2F001AD4BA /* BaseViewController.swift */; };
+		26A1C69F22AECED8001AD4BA /* BooksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C69E22AECED8001AD4BA /* BooksPresenter.swift */; };
+		26A1C6A122AECEFD001AD4BA /* BooksInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C6A022AECEFD001AD4BA /* BooksInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +81,10 @@
 		26A1C68C22AEC1AB001AD4BA /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
 		26A1C69022AEC9DE001AD4BA /* BaseDataWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDataWorker.swift; sourceTree = "<group>"; };
 		26A1C69222AECA97001AD4BA /* BookDataWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDataWorker.swift; sourceTree = "<group>"; };
+		26A1C69A22AECDF1001AD4BA /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
+		26A1C69C22AECE2F001AD4BA /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		26A1C69E22AECED8001AD4BA /* BooksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksPresenter.swift; sourceTree = "<group>"; };
+		26A1C6A022AECEFD001AD4BA /* BooksInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +138,7 @@
 				26A1C68E22AEC8F1001AD4BA /* Workers */,
 				26A1C68722AEC13C001AD4BA /* ViewModels */,
 				26A1C68222AEBEB7001AD4BA /* Model */,
+				26A1C69522AECD47001AD4BA /* Modules */,
 				26A1C67922AEBD63001AD4BA /* Common */,
 				26A1C64022AEBACD001AD4BA /* AppDelegate.swift */,
 				26A1C64222AEBACD001AD4BA /* ViewController.swift */,
@@ -172,10 +181,9 @@
 		26A1C67922AEBD63001AD4BA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				26A1C69422AECD34001AD4BA /* Enums */,
 				26A1C68F22AEC940001AD4BA /* APIServices */,
 				26A1C66E22AEBC6E001AD4BA /* Network */,
-				26A1C67D22AEBD89001AD4BA /* Enums.swift */,
-				26A1C67C22AEBD89001AD4BA /* Enums+Error.swift */,
 				26A1C67B22AEBD89001AD4BA /* Extensions.swift */,
 				26A1C67A22AEBD89001AD4BA /* Protocols.swift */,
 			);
@@ -216,6 +224,58 @@
 				26A1C67222AEBD35001AD4BA /* APIService.swift */,
 			);
 			path = APIServices;
+			sourceTree = "<group>";
+		};
+		26A1C69422AECD34001AD4BA /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				26A1C67D22AEBD89001AD4BA /* Enums.swift */,
+				26A1C67C22AEBD89001AD4BA /* Enums+Error.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		26A1C69522AECD47001AD4BA /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				26A1C69C22AECE2F001AD4BA /* BaseViewController.swift */,
+				26A1C69622AECD58001AD4BA /* BooksModule */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		26A1C69622AECD58001AD4BA /* BooksModule */ = {
+			isa = PBXGroup;
+			children = (
+				26A1C69922AECD87001AD4BA /* View */,
+				26A1C69822AECD80001AD4BA /* Interactor */,
+				26A1C69722AECD78001AD4BA /* Presenter */,
+			);
+			path = BooksModule;
+			sourceTree = "<group>";
+		};
+		26A1C69722AECD78001AD4BA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				26A1C69E22AECED8001AD4BA /* BooksPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		26A1C69822AECD80001AD4BA /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				26A1C6A022AECEFD001AD4BA /* BooksInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		26A1C69922AECD87001AD4BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				26A1C69A22AECDF1001AD4BA /* BooksViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,13 +410,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				26A1C68922AEC14C001AD4BA /* BookViewModel.swift in Sources */,
+				26A1C6A122AECEFD001AD4BA /* BooksInteractor.swift in Sources */,
 				26A1C69122AEC9DE001AD4BA /* BaseDataWorker.swift in Sources */,
 				26A1C64322AEBACD001AD4BA /* ViewController.swift in Sources */,
 				26A1C68B22AEC182001AD4BA /* CartViewModel.swift in Sources */,
+				26A1C69D22AECE2F001AD4BA /* BaseViewController.swift in Sources */,
 				26A1C68622AEBF99001AD4BA /* Book.swift in Sources */,
 				26A1C64122AEBACD001AD4BA /* AppDelegate.swift in Sources */,
 				26A1C68122AEBD89001AD4BA /* Enums.swift in Sources */,
 				26A1C67E22AEBD89001AD4BA /* Protocols.swift in Sources */,
+				26A1C69F22AECED8001AD4BA /* BooksPresenter.swift in Sources */,
 				26A1C67F22AEBD89001AD4BA /* Extensions.swift in Sources */,
 				26A1C67622AEBD35001AD4BA /* APIService.swift in Sources */,
 				26A1C68D22AEC1AB001AD4BA /* Offer.swift in Sources */,
@@ -366,6 +429,7 @@
 				26A1C68422AEBEDC001AD4BA /* Model.swift in Sources */,
 				26A1C67522AEBD35001AD4BA /* JSONParser.swift in Sources */,
 				26A1C67822AEBD35001AD4BA /* APIClient.swift in Sources */,
+				26A1C69B22AECDF2001AD4BA /* BooksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

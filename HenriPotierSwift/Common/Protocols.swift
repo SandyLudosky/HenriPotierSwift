@@ -25,6 +25,7 @@ protocol BusinessLogic: class {
 }
 
 protocol PresentationLogic {
+    var viewVC: DisplayLogic? { get set }
     func presentResults<Object: Codable>(response: Model.Response<Object>)
 }
 
