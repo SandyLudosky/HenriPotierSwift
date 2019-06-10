@@ -13,8 +13,8 @@ class BookDataWorker: BaseDataWorker {
         client.get(with: service) { result in
             switch result {
             case .array(let results):
-                guard let collection = results as? [[String : Any]] else { return }
-                let books = self.getBooks(collection)
+                guard let collection = results as? [[String : Any]],
+                let books = self.getBooks(collection) as? [Book] else { return }
                 DispatchQueue.main.async {
                     completion(.success(books))
                 }
@@ -26,8 +26,8 @@ class BookDataWorker: BaseDataWorker {
     
     private func getBooks(_ array: [[String : Any]]) -> [Book] {
         let books = array.map { dict -> Book in
-            guard let currency = try? jsonEncoder(json: dict, type: Book.self) as? Book else { fatalError("") }
-            return currency
+            guard let book = try? jsonEncoder(json: dict, type: Book.self) as? Book else { fatalError("") }
+            return book
         }
         return books
     }

@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 protocol ViewModelProtocol {
-    var isError : ErrorHandler { get set }
-    var message: String { get set }
+    var isError : Bool { get set }
+    var message: String? { get set }
 }
 protocol DisplayLogic: class {
     var interactor: BusinessLogic? { get set }
@@ -21,15 +21,13 @@ protocol DisplayLogic: class {
 
 protocol BusinessLogic: class {
     var presenter: PresentationLogic? { get set }
-    func fetch<Api: APIProtocol>(request: Model.Request<Api>)
+    func fetch<Api: APIProtocol>(with request: Request<Api>)
 }
 
 protocol PresentationLogic {
     var viewVC: DisplayLogic? { get set }
-    func presentResults<Object: Codable>(response: Model.Response<Object>)
+    func showResults<Object: Codable>(with response: Model.Response<Object>)
 }
-
-
 
 
 

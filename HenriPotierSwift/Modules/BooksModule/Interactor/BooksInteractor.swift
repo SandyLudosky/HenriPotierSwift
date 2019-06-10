@@ -8,11 +8,20 @@
 
 import Foundation
 
-
 class BooksInteractor: BusinessLogic {
     var presenter: PresentationLogic?
-    
-    func fetch<Api>(request: Model.Request<Api>) where Api : APIProtocol {
-        
+    var worker = BookDataWorker()
+    func fetch<Api>(with request: Request<Api>) where Api : APIProtocol {
+        guard let apiService = request.service as? APIService else { return }
+        worker.get(for: apiService, completion: { results in
+            switch results {
+            case .success(let objects):
+                guard let books = objects as? [Book] else { return }
+                self.presenter?.showResults(with: Model.Response(result: books, isError: false, message: nil))
+            case .failure(let reason):
+                let items = [Book]()
+                self.presenter?.showResults(with: Model.Response(result: items, isError: true, message: reason.description))
+            }
+        })
     }
 }

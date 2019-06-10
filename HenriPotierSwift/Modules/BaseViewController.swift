@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, DisplayLogic {
     var interactor: BusinessLogic?
     override func viewDidLoad() {
         configureView()
@@ -20,14 +20,12 @@ class BaseViewController: UIViewController {
         let presenter = BooksPresenter()
         let interactor = BooksInteractor()
         viewController.interactor = interactor
+        interactor.presenter = presenter
         presenter.viewVC = viewController
     }
     func configureView() {}
     func displayResults() {}
-}
-
-
-extension BaseViewController: DisplayLogic {
     func success<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol { }
     func error<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol {}
 }
+

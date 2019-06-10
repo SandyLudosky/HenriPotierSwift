@@ -10,8 +10,8 @@ import Foundation
 
 
 struct CartViewModel: ViewModelProtocol {
-    var isError: ErrorHandler
-    var message: String
+    var isError: Bool
+    var message: String?
     var books:[Book] = []
     var offers:[Offer] = []
     var discount: Double = 0.0

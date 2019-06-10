@@ -8,19 +8,14 @@
 
 import Foundation
 
-struct BookViewModel: ViewModelProtocol {
-    var isError: ErrorHandler
-    var message: String
-    let isbn: String?
-    let title: String?
-    let price: Int?
-    let cover: String?
-    let synopsis: [String]?
-    var bestRate: Double?
+struct BooksViewModel: ViewModelProtocol {
+    var isError: Bool
+    var message: String?
+    var items: [Book]?
 }
 
 
-extension BookViewModel {
+extension BooksViewModel {
     
 }
 

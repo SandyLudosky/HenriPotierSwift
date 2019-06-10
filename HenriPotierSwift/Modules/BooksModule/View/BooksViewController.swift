@@ -28,9 +28,17 @@ class BooksViewController: BaseViewController {
     }
   
     override func displayResults() {
-        
-        //self.dataSource.update(with: b)
-       // self.tableView.reloadData()
+        interactor?.fetch(with: APIServiceRequest(with: .book))
+    }
+    
+    override  func success<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol {
+        guard let booksViewModel = viewModel as? BooksViewModel else { return }
+       // self.dataSource.update(with: booksViewModel.items)
+        self.tableView.reloadData()
+    }
+    
+    override func error<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol {
+        //prévoir alert dialog
     }
 }
 

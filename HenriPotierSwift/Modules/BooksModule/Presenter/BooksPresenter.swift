@@ -8,10 +8,15 @@
 
 import Foundation
 
-
 class BooksPresenter: PresentationLogic {
     var viewVC: DisplayLogic?
-    func presentResults<Object>(response: Model.Response<Object>) where Object : Decodable, Object : Encodable {
-        
+    func showResults<Object>(with response: Model.Response<Object>) where Object : Decodable, Object : Encodable {
+        guard let object = response.result as? [Book] else {
+            let booksViewModel = BooksViewModel(isError: true, message: response.isError.description, items: nil)
+            viewVC?.error(viewModel: booksViewModel)
+            return
+        }
+        let booksViewModel = BooksViewModel(isError: false, message: nil, items: object)
+        viewVC?.success(viewModel: booksViewModel)
     }
 }

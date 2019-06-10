@@ -9,12 +9,21 @@
 import Foundation
 
 
-struct Model {
-    struct Request<Api: APIProtocol> {
-        var service : Api
+
+class Request<Api: APIProtocol> {
+    var service : Api
+    
+    init(with service: Api) {
+        self.service = service
     }
+}
+
+class APIServiceRequest: Request<APIService> {}
+
+
+struct Model {
     struct Response<Object: Codable> {
-        var result: Object
+        var result: Object?
         var isError: Bool
         var message: String?
     }
