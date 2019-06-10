@@ -27,6 +27,8 @@
 		26A1C68922AEC14C001AD4BA /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C68822AEC14C001AD4BA /* BookViewModel.swift */; };
 		26A1C68B22AEC182001AD4BA /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C68A22AEC182001AD4BA /* CartViewModel.swift */; };
 		26A1C68D22AEC1AB001AD4BA /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C68C22AEC1AB001AD4BA /* Offer.swift */; };
+		26A1C69122AEC9DE001AD4BA /* BaseDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C69022AEC9DE001AD4BA /* BaseDataWorker.swift */; };
+		26A1C69322AECA97001AD4BA /* BookDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C69222AECA97001AD4BA /* BookDataWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		26A1C68822AEC14C001AD4BA /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 		26A1C68A22AEC182001AD4BA /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		26A1C68C22AEC1AB001AD4BA /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
+		26A1C69022AEC9DE001AD4BA /* BaseDataWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDataWorker.swift; sourceTree = "<group>"; };
+		26A1C69222AECA97001AD4BA /* BookDataWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDataWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,10 +127,10 @@
 		26A1C63F22AEBACD001AD4BA /* HenriPotierSwift */ = {
 			isa = PBXGroup;
 			children = (
+				26A1C68E22AEC8F1001AD4BA /* Workers */,
 				26A1C68722AEC13C001AD4BA /* ViewModels */,
 				26A1C68222AEBEB7001AD4BA /* Model */,
 				26A1C67922AEBD63001AD4BA /* Common */,
-				26A1C66E22AEBC6E001AD4BA /* Network */,
 				26A1C64022AEBACD001AD4BA /* AppDelegate.swift */,
 				26A1C64222AEBACD001AD4BA /* ViewController.swift */,
 				26A1C64422AEBACD001AD4BA /* Main.storyboard */,
@@ -160,7 +164,6 @@
 			children = (
 				26A1C67422AEBD35001AD4BA /* APIClient.swift */,
 				26A1C67322AEBD35001AD4BA /* APIProtocol.swift */,
-				26A1C67222AEBD35001AD4BA /* APIService.swift */,
 				26A1C67122AEBD34001AD4BA /* JSONParser.swift */,
 			);
 			path = Network;
@@ -169,6 +172,8 @@
 		26A1C67922AEBD63001AD4BA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				26A1C68F22AEC940001AD4BA /* APIServices */,
+				26A1C66E22AEBC6E001AD4BA /* Network */,
 				26A1C67D22AEBD89001AD4BA /* Enums.swift */,
 				26A1C67C22AEBD89001AD4BA /* Enums+Error.swift */,
 				26A1C67B22AEBD89001AD4BA /* Extensions.swift */,
@@ -194,6 +199,23 @@
 				26A1C68A22AEC182001AD4BA /* CartViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		26A1C68E22AEC8F1001AD4BA /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				26A1C69022AEC9DE001AD4BA /* BaseDataWorker.swift */,
+				26A1C69222AECA97001AD4BA /* BookDataWorker.swift */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
+		26A1C68F22AEC940001AD4BA /* APIServices */ = {
+			isa = PBXGroup;
+			children = (
+				26A1C67222AEBD35001AD4BA /* APIService.swift */,
+			);
+			path = APIServices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26A1C68922AEC14C001AD4BA /* BookViewModel.swift in Sources */,
+				26A1C69122AEC9DE001AD4BA /* BaseDataWorker.swift in Sources */,
 				26A1C64322AEBACD001AD4BA /* ViewController.swift in Sources */,
 				26A1C68B22AEC182001AD4BA /* CartViewModel.swift in Sources */,
 				26A1C68622AEBF99001AD4BA /* Book.swift in Sources */,
@@ -339,6 +362,7 @@
 				26A1C68D22AEC1AB001AD4BA /* Offer.swift in Sources */,
 				26A1C68022AEBD89001AD4BA /* Enums+Error.swift in Sources */,
 				26A1C67722AEBD35001AD4BA /* APIProtocol.swift in Sources */,
+				26A1C69322AECA97001AD4BA /* BookDataWorker.swift in Sources */,
 				26A1C68422AEBEDC001AD4BA /* Model.swift in Sources */,
 				26A1C67522AEBD35001AD4BA /* JSONParser.swift in Sources */,
 				26A1C67822AEBD35001AD4BA /* APIClient.swift in Sources */,
