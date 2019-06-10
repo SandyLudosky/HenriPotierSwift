@@ -9,6 +9,7 @@
 import UIKit
 
 class BaseViewController: UIViewController, DisplayLogic {
+    var router: RoutingLogic?
     var interactor: BusinessLogic?
     override func viewDidLoad() {
         configureView()
@@ -16,16 +17,26 @@ class BaseViewController: UIViewController, DisplayLogic {
     }
     
     func setup() {
-        let viewController = self
-        let presenter = BooksPresenter()
-        let interactor = BooksInteractor()
-        viewController.interactor = interactor
-        interactor.presenter = presenter
-        presenter.viewVC = viewController
+        booksModuleSetup()
     }
+
     func configureView() {}
     func displayResults() {}
     func success<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol { }
     func error<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol {}
+}
+
+extension BaseViewController {
+    private func booksModuleSetup() {
+        let viewController = self
+        let presenter = BooksPresenter()
+        let interactor = BooksInteractor()
+        let router = Router()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewVC = viewController
+        router.viewVC = viewController
+    }
 }
 

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class BooksInteractor: BusinessLogic {
     var presenter: PresentationLogic?
@@ -23,5 +24,13 @@ class BooksInteractor: BusinessLogic {
                 self.presenter?.showResults(with: Model.Response(result: items, isError: true, message: reason.description))
             }
         })
+    }
+    
+    func addToCart(_ dataSource: BooksDataSource,_ tableView: UITableView) {
+        let cells = tableView.visibleCells
+        let checkedCells = cells.filter { cell -> Bool in
+            cell.accessoryType == .checkmark
+        }
+        dataSource.select(checkedCells, tableView)
     }
 }

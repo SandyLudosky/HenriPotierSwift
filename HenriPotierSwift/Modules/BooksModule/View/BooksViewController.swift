@@ -11,7 +11,8 @@ import UIKit
 class BooksViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBAction func addToCartAction(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "goToCart", sender: self)
+       addToCart()
+       router?.pushToView(with: "goToCart", and: dataSource.selectedBooks)
     }
     var dataSource = BooksDataSource(items: [])
    
@@ -40,6 +41,14 @@ class BooksViewController: BaseViewController {
     
     override func error<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol {
         //prévoir alert dialog
+    }
+    
+    func addToCart() {
+        let cells = tableView.visibleCells
+        let checkedCells = cells.filter { cell -> Bool in
+            cell.accessoryType == .checkmark
+        }
+        dataSource.select(checkedCells, tableView)
     }
 }
 

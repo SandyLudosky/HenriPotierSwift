@@ -61,7 +61,7 @@
         <!--Cart View Controller-->
         <scene sceneID="67q-Ec-TTa">
             <objects>
-                <viewController id="2tz-Ij-d1r" customClass="CartViewController" customModule="HenriPotierSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CartViewController" id="2tz-Ij-d1r" customClass="CartViewController" customModule="HenriPotierSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oWt-em-Abr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -15,6 +15,7 @@ protocol ViewModelProtocol {
 }
 protocol DisplayLogic: class {
     var interactor: BusinessLogic? { get set }
+    var router: RoutingLogic? { get set }
     func success<viewModel: ViewModelProtocol>(viewModel: viewModel)
     func error<viewModel: ViewModelProtocol>(viewModel: viewModel)
 }
@@ -29,5 +30,9 @@ protocol PresentationLogic {
     func showResults<Object: Codable>(with response: Model.Response<Object>)
 }
 
+protocol RoutingLogic {
+    var viewVC: BaseViewController? { get set }
+    func pushToView<Object: Codable>(with identifier: String, and response: Object)
+}
 
 
