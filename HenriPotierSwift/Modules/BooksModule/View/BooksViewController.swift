@@ -13,7 +13,7 @@ class BooksViewController: BaseViewController {
     @IBAction func addToCartAction(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "goToCart", sender: self)
     }
-    var dataSource: BooksDataSource?
+    var dataSource = BooksDataSource(items: [])
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class BooksViewController: BaseViewController {
     override func success<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol {
         guard let booksViewModel = viewModel as? BooksViewModel,
               let books = booksViewModel.items else { return }
-        self.dataSource?.update(with: books)
+        self.dataSource.update(with: books)
         self.tableView.reloadData()
     }
     

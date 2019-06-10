@@ -11,7 +11,6 @@ import UIKit
 import SDWebImage
 
 class BookCellViewModel {
-    let dataManager = DataManagerService()
     var coverImage: UIImage?
     var coverImageView: UIImageView?
     var cover: String?
