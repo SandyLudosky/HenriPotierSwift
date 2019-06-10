@@ -13,10 +13,10 @@ protocol ViewModelProtocol {
     var isError : ErrorHandler { get set }
     var message: String { get set }
 }
-protocol BookDisplayLogic: class {
+protocol DisplayLogic: class {
     var interactor: BusinessLogic? { get set }
-    func success(viewModel: BookViewModel)
-    func error(viewModel: BookViewModel)
+    func success<viewModel: ViewModelProtocol>(viewModel: viewModel)
+    func error<viewModel: ViewModelProtocol>(viewModel: viewModel)
 }
 
 protocol BusinessLogic: class {
