@@ -47,6 +47,7 @@
 		26A1C6C222AF12F7001AD4BA /* CartCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C6C122AF12F7001AD4BA /* CartCellViewModel.swift */; };
 		26A1C6C422AF16E3001AD4BA /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C6C322AF16E3001AD4BA /* Rate.swift */; };
 		26A1C6C622AF20E7001AD4BA /* CartDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C6C522AF20E7001AD4BA /* CartDataSource.swift */; };
+		26A1C6C822B011B5001AD4BA /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C6C722B011B5001AD4BA /* Cart.swift */; };
 		43151081FFC59820CD0D84E6 /* Pods_HenriPotierSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1CF452477DA3E1CC016694 /* Pods_HenriPotierSwiftUITests.framework */; };
 		81E0C5E6A5F2F17EAF16459B /* Pods_HenriPotierSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B20BD6E6414160317F5D01 /* Pods_HenriPotierSwiftTests.framework */; };
 		8E9EDBF1A97F2C5F29FFBA40 /* Pods_HenriPotierSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B50C80717EA282A69E3C061 /* Pods_HenriPotierSwift.framework */; };
@@ -117,6 +118,7 @@
 		26A1C6C122AF12F7001AD4BA /* CartCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCellViewModel.swift; sourceTree = "<group>"; };
 		26A1C6C322AF16E3001AD4BA /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		26A1C6C522AF20E7001AD4BA /* CartDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartDataSource.swift; sourceTree = "<group>"; };
+		26A1C6C722B011B5001AD4BA /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		2A6A3E3C5AFFB9529CEF7120 /* Pods-HenriPotierSwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HenriPotierSwiftUITests.debug.xcconfig"; path = "Target Support Files/Pods-HenriPotierSwiftUITests/Pods-HenriPotierSwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3E11DAFF369D0F6D59C23723 /* Pods-HenriPotierSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HenriPotierSwiftTests.release.xcconfig"; path = "Target Support Files/Pods-HenriPotierSwiftTests/Pods-HenriPotierSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 		5B50C80717EA282A69E3C061 /* Pods_HenriPotierSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HenriPotierSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -244,6 +246,7 @@
 				26A1C68522AEBF99001AD4BA /* Book.swift */,
 				26A1C68C22AEC1AB001AD4BA /* Offer.swift */,
 				26A1C6C322AF16E3001AD4BA /* Rate.swift */,
+				26A1C6C722B011B5001AD4BA /* Cart.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -289,9 +292,9 @@
 			isa = PBXGroup;
 			children = (
 				26A1C69C22AECE2F001AD4BA /* BaseViewController.swift */,
+				26A1C6AE22AF057C001AD4BA /* Router.swift */,
 				26A1C69622AECD58001AD4BA /* BooksModule */,
 				26A1C6B022AF0977001AD4BA /* CartModule */,
-				26A1C6AE22AF057C001AD4BA /* Router.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -689,6 +692,7 @@
 				26A1C67722AEBD35001AD4BA /* APIProtocol.swift in Sources */,
 				26A1C69322AECA97001AD4BA /* BookDataWorker.swift in Sources */,
 				26A1C68422AEBEDC001AD4BA /* Model.swift in Sources */,
+				26A1C6C822B011B5001AD4BA /* Cart.swift in Sources */,
 				26A1C67522AEBD35001AD4BA /* JSONParser.swift in Sources */,
 				26A1C6BC22AF120F001AD4BA /* CartInterator.swift in Sources */,
 				26A1C67822AEBD35001AD4BA /* APIClient.swift in Sources */,

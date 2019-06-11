@@ -9,8 +9,9 @@
 import UIKit
 
 class CartCell: UITableViewCell {
-    @IBOutlet weak var rateLabel: UILabel!
-    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var subTotalValueLabel: UILabel!
+    @IBOutlet weak var discountValueLabel: UILabel!
+    @IBOutlet weak var totalValueLabel: UILabel!
     @IBOutlet weak var cartCellView: UIView!
     static let identifier = "cartCellIdentifier"
     
@@ -21,9 +22,10 @@ class CartCell: UITableViewCell {
         cartCellView.layer.borderColor = UIColor.gray.cgColor
     }
    
-    func configure(with viewModel: CartCellViewModel) {
-        rateLabel.text = "\(viewModel.value)"
-        valueLabel.text = viewModel.type.string
+    func configure(with vm: CartCellViewModel) {
+        subTotalValueLabel.text = vm.subTotalValueString
+        discountValueLabel.text = vm.discountValueString
+        totalValueLabel.text = vm.totalValueString
         configureView()
     }
 }

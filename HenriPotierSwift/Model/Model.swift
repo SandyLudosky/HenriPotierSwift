@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 class Request<Api: APIProtocol> {
     var service : Api
     

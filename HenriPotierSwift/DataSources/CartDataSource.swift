@@ -10,15 +10,14 @@ import Foundation
 import UIKit
 
 class CartDataSource: NSObject {
-    var cart: CartViewModel?
+    var cartVM: CartViewModel?
     init(cart: CartViewModel?) {
-        self.cart = cart
+        self.cartVM = cart
         super.init()
     }
-    
     // MARK: - Helper
     func update(with cart: CartViewModel?) {
-        self.cart = cart
+        self.cartVM = cart
     }
 }
 
@@ -28,26 +27,26 @@ extension CartDataSource: UITableViewDataSource {
         return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? cart?.books.count ?? 0 :  1
+        return section == 0 ? cartVM?.books.count ?? 0 :  1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: BookCell.identifier, for: indexPath) as? BookCell else { return UITableViewCell() }
-            guard let books = cart?.books else { return UITableViewCell() }
+            guard let books = cartVM?.books else { return UITableViewCell() }
             let book = books[indexPath.row]
-            let viewModel = BookCellViewModel(with: book)
-            cell.configure(with: viewModel)
+            cell.configure(with: BookCellViewModel(with: book))
             return cell
         }
         if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CartCell.identifier, for: indexPath) as? CartCell else { return UITableViewCell() }
-            guard let value = cart?.rates.first?.value,
-                let type = cart?.rates.first?.type else { return UITableViewCell() }
-            let viewModel = CartCellViewModel(value: value, type: type)
-            cell.configure(with: viewModel)
+            guard let cart = cartVM else { return UITableViewCell()  }
+            cell.configure(with: CartCellViewModel(with: cart))
             return cell
         }
         return UITableViewCell()
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.section == 0 ? 100 : 130
     }
 }
