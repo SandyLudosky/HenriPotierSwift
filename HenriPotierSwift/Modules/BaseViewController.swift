@@ -18,6 +18,7 @@ class BaseViewController: UIViewController, DisplayLogic {
     
     func setup() {
         booksModuleSetup()
+        //cartModuleSetup()
     }
 
     func configureView() {}
@@ -37,6 +38,16 @@ extension BaseViewController {
         interactor.presenter = presenter
         presenter.viewVC = viewController
         router.viewVC = viewController
+    }
+    
+    private func cartModuleSetup() {
+      
+        let presenter = CartPresenter()
+        let interactor = CartInteractor()
+        let router = Router()
+      
+        interactor.presenter = presenter
+       
     }
 }
 

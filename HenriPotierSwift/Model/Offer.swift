@@ -8,6 +8,23 @@
 
 import Foundation
 
+enum Type {
+    case percentage(value: Int), minus(value: Int), slice(value: Int,value:  Int)
+    var string: String {
+        switch self {
+        case .percentage: return "percentage"
+        case .minus: return "minus"
+        case .slice: return "slice"
+        }
+    }
+}
+
+struct CommercialOffer {
+    var percentage: Int
+    var minus: Int
+    var slice: (Int, Int)
+}
+
 struct Offer: Codable  {
     let type: String
     let sliceValue:Int

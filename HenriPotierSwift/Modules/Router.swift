@@ -21,9 +21,6 @@ class Router: RoutingLogic {
 
 extension Router {
     private func goToCart<O: Codable>(with response: O, and identifier: String) {
-        guard let cartVC:CartViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CartViewController") as? CartViewController,
-            let books = response as? [Book] else { return }
-        cartVC.books = books
         viewVC?.performSegue(withIdentifier: identifier, sender: viewVC)
     }
 }

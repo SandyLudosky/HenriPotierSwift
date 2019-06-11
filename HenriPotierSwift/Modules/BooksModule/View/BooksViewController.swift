@@ -13,6 +13,7 @@ class BooksViewController: BaseViewController {
     @IBAction func addToCartAction(_ sender: UIBarButtonItem) {
        addToCart()
        router?.pushToView(with: "goToCart", and: dataSource.selectedBooks)
+ 
     }
     var dataSource = BooksDataSource(items: [])
    
@@ -61,13 +62,12 @@ extension BooksViewController: UITableViewDelegate  {
     }
 }
 
-//MARK - Segue
+
 extension BooksViewController {
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       // viewModel.addToCart(dataSource, tableView)
-        //guard let cartVC = segue.destination as? CartViewController,
-       // let selected = dataSource.selectedBooks as? [Book] else { return }
-       // cartVC.viewModel.books = selected
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToCart" {
+            guard let cartVC = segue.destination as? CartViewController else { return }
+            cartVC.books = dataSource.selectedBooks
+        }
     }
 }
-
