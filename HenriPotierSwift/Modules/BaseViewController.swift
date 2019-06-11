@@ -17,18 +17,6 @@ class BaseViewController: UIViewController, DisplayLogic {
     }
     
     func setup() {
-        booksModuleSetup()
-        //cartModuleSetup()
-    }
-
-    func configureView() {}
-    func displayResults() {}
-    func success<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol { }
-    func error<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol {}
-}
-
-extension BaseViewController {
-    private func booksModuleSetup() {
         let viewController = self
         let presenter = BooksPresenter()
         let interactor = BooksInteractor()
@@ -39,15 +27,10 @@ extension BaseViewController {
         presenter.viewVC = viewController
         router.viewVC = viewController
     }
-    
-    private func cartModuleSetup() {
-      
-        let presenter = CartPresenter()
-        let interactor = CartInteractor()
-        let router = Router()
-      
-        interactor.presenter = presenter
-       
-    }
+
+    func configureView() {}
+    func displayResults() {}
+    func success<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol { }
+    func error<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol {}
 }
 

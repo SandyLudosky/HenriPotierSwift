@@ -28,21 +28,11 @@ extension CartDataSource: UITableViewDataSource {
         return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : cart?.books.count ?? 0
+        return section == 0 ? cart?.books.count ?? 0 :  1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CartCell.identifier, for: indexPath) as? CartCell else { return UITableViewCell() }
-            guard let value = cart?.rates.first?.value,
-                let type = cart?.rates.first?.type else { return UITableViewCell() }
-            let viewModel = CartCellViewModel(value: value, type: type)
-            cell.configure(with: viewModel)
-            return cell
-        }
-        
-        if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: BookCell.identifier, for: indexPath) as? BookCell else { return UITableViewCell() }
             guard let books = cart?.books else { return UITableViewCell() }
             let book = books[indexPath.row]
@@ -50,7 +40,14 @@ extension CartDataSource: UITableViewDataSource {
             cell.configure(with: viewModel)
             return cell
         }
-       
+        if indexPath.section == 1 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CartCell.identifier, for: indexPath) as? CartCell else { return UITableViewCell() }
+            guard let value = cart?.rates.first?.value,
+                let type = cart?.rates.first?.type else { return UITableViewCell() }
+            let viewModel = CartCellViewModel(value: value, type: type)
+            cell.configure(with: viewModel)
+            return cell
+        }
         return UITableViewCell()
     }
 }

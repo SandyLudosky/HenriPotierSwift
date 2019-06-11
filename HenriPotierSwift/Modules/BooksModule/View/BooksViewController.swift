@@ -12,8 +12,8 @@ class BooksViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBAction func addToCartAction(_ sender: UIBarButtonItem) {
        addToCart()
+        guard dataSource.selectedBooks.count > 0 else { return }
        router?.pushToView(with: "goToCart", and: dataSource.selectedBooks)
- 
     }
     var dataSource = BooksDataSource(items: [])
    

@@ -18,8 +18,21 @@ class CartViewController: BaseViewController {
         getIsbn()
         displayResults()
     }
+    
+    override func setup() {
+        let viewController = self
+        let presenter = CartPresenter()
+        let interactor = CartInteractor()
+        let router = Router()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewVC = viewController
+        router.viewVC = viewController
+    }
 
     override func configureView() {
+        tableView.dataSource = dataSource
         tableView.register(UINib(nibName: "CartCell", bundle: nil), forCellReuseIdentifier: CartCell.identifier)
         tableView.register(UINib(nibName: "BookCell", bundle: nil), forCellReuseIdentifier: BookCell.identifier)
        

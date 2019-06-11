@@ -67,7 +67,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rbc-zC-V9C">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="98" width="414" height="764"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cartCellIdentifier" rowHeight="130" id="bIY-D0-yoN" customClass="CartCell" customModule="HenriPotierSwift" customModuleProvider="target">
@@ -93,7 +93,7 @@
                         <constraints>
                             <constraint firstItem="rbc-zC-V9C" firstAttribute="leading" secondItem="oWt-em-Abr" secondAttribute="leading" id="00c-O3-520"/>
                             <constraint firstItem="pXJ-Pp-6M2" firstAttribute="bottom" secondItem="rbc-zC-V9C" secondAttribute="bottom" id="G1f-4s-qSp"/>
-                            <constraint firstItem="rbc-zC-V9C" firstAttribute="top" secondItem="pXJ-Pp-6M2" secondAttribute="top" id="d4H-05-d9g"/>
+                            <constraint firstItem="rbc-zC-V9C" firstAttribute="top" secondItem="pXJ-Pp-6M2" secondAttribute="top" constant="10" id="d4H-05-d9g"/>
                             <constraint firstItem="pXJ-Pp-6M2" firstAttribute="trailing" secondItem="rbc-zC-V9C" secondAttribute="trailing" id="l9W-s1-LK6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pXJ-Pp-6M2"/>

@@ -28,10 +28,9 @@ struct CartViewModel: ViewModelProtocol {
 }
 
 extension CartViewModel {
-    init(isError: Bool, message: String?, offers: [Offer]) {
+    init(isError: Bool, message: String?) {
         self.isError = isError
         self.message = message
-        self.offers = offers
     }
     var commercialOffers:[Offer] {
         guard let offers = offers as? [Offer] else { return [] }

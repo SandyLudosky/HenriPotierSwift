@@ -333,8 +333,8 @@
 		26A1C6A222AEFCC0001AD4BA /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
-				26A1C6C522AF20E7001AD4BA /* CartDataSource.swift */,
 				26A1C6A322AEFD11001AD4BA /* BooksDataSource.swift */,
+				26A1C6C522AF20E7001AD4BA /* CartDataSource.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
