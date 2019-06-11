@@ -33,9 +33,9 @@ class CartViewController: BaseViewController {
 
     override func configureView() {
         tableView.dataSource = dataSource
+        
         tableView.register(UINib(nibName: "CartCell", bundle: nil), forCellReuseIdentifier: CartCell.identifier)
         tableView.register(UINib(nibName: "BookCell", bundle: nil), forCellReuseIdentifier: BookCell.identifier)
-       
     }
 
     override func displayResults() {

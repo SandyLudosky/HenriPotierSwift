@@ -33,3 +33,16 @@ extension Sequence {
         return results ?? []
     }
 }
+
+
+extension Double {
+    func format(f: String) -> String {
+        return String(format: "€\(f)", self)
+    }
+}
+
+extension String {
+    func format(f: String) -> String {
+        return String(format: "€\(f)", self)
+    }
+}

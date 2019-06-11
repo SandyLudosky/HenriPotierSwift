@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BookCell: UITableViewCell {
+class BookCell: BaseCell {
     static let identifier = "bookCellIdentifier"
     var isChecked = false
     @IBOutlet weak var coverImageView: UIImageView!

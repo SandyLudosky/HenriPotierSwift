@@ -18,15 +18,15 @@ struct CartCellViewModel {
     
     var subTotalValueString: String {
         guard let subTotal = self.cart?.subTotal else { return "" }
-        return "€\(subTotal)"
+        return subTotal.format(f: "%.2f")
     }
     var discountValueString: String {
         guard let discount = self.cart?.discount, let bestRate = self.cart?.best else { return "" }
-        return "€\(discount)"
+        return discount.format(f: "%.2f")
     }
     var totalValueString: String {
         guard let total = self.cart?.total else { return "" }
-        return "€\(total)"
+        return total.format(f: "%.2f")
     }
 }
 

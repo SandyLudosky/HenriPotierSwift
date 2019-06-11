@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CartCell: UITableViewCell {
+class CartCell: BaseCell {
     @IBOutlet weak var subTotalValueLabel: UILabel!
     @IBOutlet weak var discountValueLabel: UILabel!
     @IBOutlet weak var totalValueLabel: UILabel!
