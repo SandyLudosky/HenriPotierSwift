@@ -8,9 +8,9 @@
 
 import Foundation
 
-
 struct Cart {
     var items:[Item] = []
+    var count = 0
     func getISBNs() -> [String] {
         guard let books = items as? [Book] else { return []}
         let isbns = books.map { book -> String in
@@ -21,6 +21,10 @@ struct Cart {
     }
     
     mutating func add(_ items:[Item]) {
+        self.items = items
+    }
+    
+    init(_ items: [Item]) {
         self.items = items
     }
 }

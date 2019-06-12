@@ -49,6 +49,7 @@
 		26A1C6C822B011B5001AD4BA /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C6C722B011B5001AD4BA /* Cart.swift */; };
 		26A1C6CA22B043C9001AD4BA /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C6C922B043C9001AD4BA /* BaseCell.swift */; };
 		26A1C6CC22B17EA2001AD4BA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C6CB22B17EA2001AD4BA /* Item.swift */; };
+		26A1C6D022B19EF7001AD4BA /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1C6CF22B19EF7001AD4BA /* Reachability.swift */; };
 		43151081FFC59820CD0D84E6 /* Pods_HenriPotierSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC1CF452477DA3E1CC016694 /* Pods_HenriPotierSwiftUITests.framework */; };
 		81E0C5E6A5F2F17EAF16459B /* Pods_HenriPotierSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B20BD6E6414160317F5D01 /* Pods_HenriPotierSwiftTests.framework */; };
 		8E9EDBF1A97F2C5F29FFBA40 /* Pods_HenriPotierSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B50C80717EA282A69E3C061 /* Pods_HenriPotierSwift.framework */; };
@@ -121,6 +122,7 @@
 		26A1C6C722B011B5001AD4BA /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		26A1C6C922B043C9001AD4BA /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		26A1C6CB22B17EA2001AD4BA /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		26A1C6CF22B19EF7001AD4BA /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		2A6A3E3C5AFFB9529CEF7120 /* Pods-HenriPotierSwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HenriPotierSwiftUITests.debug.xcconfig"; path = "Target Support Files/Pods-HenriPotierSwiftUITests/Pods-HenriPotierSwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3E11DAFF369D0F6D59C23723 /* Pods-HenriPotierSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HenriPotierSwiftTests.release.xcconfig"; path = "Target Support Files/Pods-HenriPotierSwiftTests/Pods-HenriPotierSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 		5B50C80717EA282A69E3C061 /* Pods_HenriPotierSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HenriPotierSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,6 +227,7 @@
 				26A1C67422AEBD35001AD4BA /* APIClient.swift */,
 				26A1C67322AEBD35001AD4BA /* APIProtocol.swift */,
 				26A1C67122AEBD34001AD4BA /* JSONParser.swift */,
+				26A1C6CF22B19EF7001AD4BA /* Reachability.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -624,12 +627,14 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-HenriPotierSwift/Pods-HenriPotierSwift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -680,6 +685,7 @@
 				26A1C6C622AF20E7001AD4BA /* CartDataSource.swift in Sources */,
 				26A1C6C022AF127D001AD4BA /* CartDataWorker.swift in Sources */,
 				26A1C64122AEBACD001AD4BA /* AppDelegate.swift in Sources */,
+				26A1C6D022B19EF7001AD4BA /* Reachability.swift in Sources */,
 				26A1C68122AEBD89001AD4BA /* Enums.swift in Sources */,
 				26A1C67E22AEBD89001AD4BA /* Protocols.swift in Sources */,
 				26A1C69F22AECED8001AD4BA /* BooksPresenter.swift in Sources */,

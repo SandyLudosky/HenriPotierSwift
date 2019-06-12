@@ -10,10 +10,10 @@ import UIKit
 
 class BooksViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
-    var cart = Cart(items: [])
+    var cart = Cart([])
+    let button = UIButton(type: .system)
     @IBAction func addToCartAction(_ sender: UIBarButtonItem) {
-        addToCart()
-        router?.pushToView(with: "goToCart", and: cart as Any)
+       
     }
     var dataSource = BooksDataSource(items: [])
    
@@ -26,7 +26,22 @@ class BooksViewController: BaseViewController {
        tableView.dataSource = dataSource
        tableView.delegate = self
        tableView.register(UINib(nibName: "BookCell", bundle: nil), forCellReuseIdentifier: BookCell.identifier)
-        
+       configureCartButton()
+    }
+    
+    func configureCartButton() {
+       
+        button.setTitle("\(cart.count) ", for: .normal)
+        button.setImage(UIImage(named: "shopping-cart"), for: .normal)
+        button.sizeToFit()
+        button.addTarget(self, action: #selector(navigateToCart), for: .touchUpInside)
+        let rightButton = UIBarButtonItem(customView: button)
+        navigationItem.rightBarButtonItem = rightButton
+    }
+    
+    @objc func navigateToCart() {
+        addToCart()
+        router?.pushToView(with: "goToCart", and: cart as Any)
     }
   
     override func displayResults() {
@@ -44,14 +59,7 @@ class BooksViewController: BaseViewController {
         //prévoir alert dialog
     }
     
-    func addToCart() {
-        let cells = tableView.visibleCells
-        let checkedCells = cells.filter { cell -> Bool in
-            cell.accessoryType == .checkmark
-        }
-        let books = dataSource.select(checkedCells, tableView)
-        cart.add(books)
-    }
+   
 }
 
 //MARK - UITableViewDelegate
@@ -60,6 +68,8 @@ extension BooksViewController: UITableViewDelegate  {
         guard let cell = tableView.cellForRow(at: indexPath) as? BookCell else { return }
         cell.toggle()
         tableView.reloadData()
+        let count = getSelectedCells().count
+        button.setTitle("-\(count)", for: .normal)
     }
 }
 
@@ -70,5 +80,22 @@ extension BooksViewController {
             guard let cartVC = segue.destination as? CartViewController else { return }
             cartVC.cart = cart
         }
+    }
+}
+
+//MARK - Private
+extension BooksViewController {
+    private func addToCart() {
+        let books = dataSource.select(getSelectedCells(), tableView)
+        cart.add(books)
+    }
+    
+    // to count selected cells
+    private func getSelectedCells() -> [UITableViewCell] {
+        let cells = tableView.visibleCells
+        let checkedCells = cells.filter { cell -> Bool in
+            cell.accessoryType == .checkmark
+        }
+        return checkedCells
     }
 }

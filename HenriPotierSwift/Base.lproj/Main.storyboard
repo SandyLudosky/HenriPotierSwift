@@ -43,7 +43,7 @@
                         <viewLayoutGuide key="safeArea" id="OzD-Ig-xI9"/>
                     </view>
                     <navigationItem key="navigationItem" id="24l-KW-qB4">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="4j9-iC-zBM">
+                        <barButtonItem key="rightBarButtonItem" id="4j9-iC-zBM">
                             <connections>
                                 <action selector="addToCartAction:" destination="c7q-g1-91i" id="a0l-DV-P7v"/>
                             </connections>

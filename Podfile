@@ -6,7 +6,8 @@ target 'HenriPotierSwift' do
   use_frameworks!
 
   # Pods for HenriPotierSwift
- pod 'SDWebImage', '~> 5.0'
+  pod 'SDWebImage', '~> 5.0'
+  pod 'ReachabilitySwift'
   target 'HenriPotierSwiftTests' do
     inherit! :search_paths
     # Pods for testing
