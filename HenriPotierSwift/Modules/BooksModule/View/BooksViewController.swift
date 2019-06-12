@@ -56,7 +56,9 @@ class BooksViewController: BaseViewController {
     }
     
     override func error<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol {
-        //prévoir alert dialog
+        if viewModel.isError {
+            view.makeToast(message: "\(String(describing: viewModel.message))", duration: HRToastDefaultDuration, position: .bottom)
+        }
     }
     
    

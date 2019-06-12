@@ -52,6 +52,9 @@ extension CartViewModel {
     //best discount
     var discount: Double {
        guard let value = bestOffer?.value else { return 0.0 }
+        if subTotal == 0.0 {
+            return 0.0
+        }
        return Double(value)
     }
     

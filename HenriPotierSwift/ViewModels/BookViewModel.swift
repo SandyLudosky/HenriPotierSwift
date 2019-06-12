@@ -14,8 +14,3 @@ struct BooksViewModel: ViewModelProtocol {
     var items: [Book]?
 }
 
-
-extension BooksViewModel {
-    
-}
-

@@ -58,16 +58,16 @@ class CartViewController: BaseViewController {
     }
     
     override func error<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol {
-        //prévoir alert dialog
+        if viewModel.isError {
+            view.makeToast(message: "\(String(describing: viewModel.message))", duration: HRToastDefaultDuration, position: .bottom)
+        }
     }
 }
 extension CartViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
         let DeleteAction = UITableViewRowAction(style: .default, title: "Delete" , handler: { (action:UITableViewRowAction, indexPath: IndexPath) -> Void in
             self.deleteAction(at: indexPath)
         })
-        
         return [DeleteAction]
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -76,22 +76,17 @@ extension CartViewController : UITableViewDelegate {
             tableView.deleteRows(at: [indexPath], with: .top)
         }
     }
-    func deleteAction(at indexPath: IndexPath) {
-        let shareMenu = UIAlertController(title: nil, message: "Actions", preferredStyle: .actionSheet)
-        
-        let deleteAction = UIAlertAction(title: "Delete", style: .default) { action in
-            self.cart?.items.remove(at: indexPath.row)
-            guard var vm = self.cartVM, let books = self.cart?.items as? [Book] else { return }
-            vm.books = books
-            self.dataSource.update(with: vm)
-            self.tableView.reloadData()
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        shareMenu.addAction(deleteAction)
-        shareMenu.addAction(cancelAction)
-        
-        self.present(shareMenu, animated: true, completion: nil)
-    }
 }
 
+//MARK - Private
+extension CartViewController {
+    private func deleteAction(at indexPath: IndexPath) {
+        guard var vm = self.cartVM, var books = self.cart?.items as? [Book] else { return }
+        let title = books[indexPath.row].title
+        books.remove(at: indexPath.row)
+        vm.books = books
+        self.dataSource.update(with: vm)
+        self.tableView.reloadData()
+        self.view.makeToast(message: "item \(String(describing: title)) removed", duration: HRToastDefaultDuration, position: .bottom)
+    }
+}
