@@ -11,7 +11,7 @@ import UIKit
 
 class Router: RoutingLogic {
     var viewVC: BaseViewController?
-    func pushToView<Object>(with identifier: String, and response: Object) where Object : Decodable, Object : Encodable {
+    func pushToView(with identifier: String, and response: Any) {
         switch identifier {
         case "goToCart": goToCart(with: response, and: identifier)
         default: break
@@ -20,7 +20,7 @@ class Router: RoutingLogic {
 }
 
 extension Router {
-    private func goToCart<O: Codable>(with response: O, and identifier: String) {
+    private func goToCart(with response: Any, and identifier: String) {
         viewVC?.performSegue(withIdentifier: identifier, sender: viewVC)
     }
 }

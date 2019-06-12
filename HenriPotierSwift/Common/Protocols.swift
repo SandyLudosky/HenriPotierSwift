@@ -32,7 +32,7 @@ protocol PresentationLogic {
 
 protocol RoutingLogic {
     var viewVC: BaseViewController? { get set }
-    func pushToView<Object: Codable>(with identifier: String, and response: Object)
+    func pushToView(with identifier: String, and response: Any)
 }
 
 

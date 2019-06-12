@@ -8,26 +8,23 @@
 
 import Foundation
 
-struct Book: Codable  {
+class Book: Item, Codable {
     let isbn: String?
-    let title: String?
-    let price: Int?
     let cover: String?
     let synopsis: [String]?
     var bestRate: Double?
-}
-
-extension Book {
+    
     enum CodingKeys: String, CodingKey {
         case isbn,title, price, cover, synopsis
     }
-    public init(from decoder: Decoder) throws {
+    required public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        let title = try values.decodeIfPresent(String.self, forKey: .title) ?? ""
+        let price = try values.decodeIfPresent(Int.self, forKey: .price) ?? 0
         isbn = try values.decodeIfPresent(String.self, forKey: .isbn) ?? ""
-        title = try values.decodeIfPresent(String.self, forKey: .title) ?? ""
-        price = try values.decodeIfPresent(Int.self, forKey: .price) ?? 0
         cover = try values.decodeIfPresent(String.self, forKey: .cover) ?? ""
         synopsis = try values.decodeIfPresent([String].self, forKey: .synopsis) ?? []
+        super.init(title: title, price: price)
     }
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
