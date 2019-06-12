@@ -11,7 +11,7 @@ import UIKit
 class CartViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     var dataSource = CartDataSource(cart: nil)
-    var books: [Book]?
+    var cart: Cart?
     var isbns: [String] = []
     var cartVM: CartViewModel?
     override func viewDidLoad() {
@@ -44,15 +44,13 @@ class CartViewController: BaseViewController {
     }
     
     func getIsbn() {
-        books?.forEach { book in
-            guard let isbn = book.isbn else { return }
-            isbns.append(isbn)
-        }
+        guard let booksISBNS = cart?.getISBNs() else { return }
+        isbns = booksISBNS
     }
     
     override func success<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol {
         guard var cartViewModel = viewModel as? CartViewModel,
-            let selectedBooks = books else { return }
+            let selectedBooks = cart?.books else { return }
         cartViewModel.books = selectedBooks
         cartVM = cartViewModel
         self.dataSource.update(with: cartVM)
@@ -74,7 +72,7 @@ extension CartViewController : UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            self.books?.remove(at: indexPath.row)
+            self.cart?.books.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .top)
         }
     }
@@ -82,8 +80,8 @@ extension CartViewController : UITableViewDelegate {
         let shareMenu = UIAlertController(title: nil, message: "Actions", preferredStyle: .actionSheet)
         
         let deleteAction = UIAlertAction(title: "Delete", style: .default) { action in
-            self.books?.remove(at: indexPath.row)
-            guard var vm = self.cartVM, let books = self.books else { return }
+            self.cart?.books.remove(at: indexPath.row)
+            guard var vm = self.cartVM, let books = self.cart?.books else { return }
             vm.books = books
             self.dataSource.update(with: vm)
             self.tableView.reloadData()

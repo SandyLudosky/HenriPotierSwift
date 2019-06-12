@@ -13,12 +13,12 @@ struct CartViewModel: ViewModelProtocol {
     var isError: Bool
     var message: String?
     var books: [Book] = []
-    var computed: [Offer] = []
+    var computedOffers: [Offer] = []
     var sorted: [Offer] = []
     var bestOffer: Offer?
     var offers: [Offer] = [] {
         didSet {
-            computed = calculate()
+            computedOffers = calculate()
             sorted = sort()
             bestOffer = getBestOffer()
         }
@@ -60,7 +60,7 @@ extension CartViewModel {
         return subTotal - discount
     }
     
-    func getISBNs() {}
+
     
     mutating func calculate() -> [Offer]  {
         let computed = offers.map { offer -> Offer in
@@ -74,7 +74,7 @@ extension CartViewModel {
     }
     
     mutating func sort() -> [Offer] {
-        return computed.sorted()
+        return computedOffers.sorted()
     }
     
     func getBestOffer() -> Offer {

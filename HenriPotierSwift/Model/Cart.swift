@@ -11,6 +11,11 @@ import Foundation
 
 struct Cart: Codable {
     var books:[Book] = []
-    var offers:[Offer]?
-    var offer: Offer?
+    func getISBNs() -> [String] {
+        let isbns = books.map { book -> String in
+            guard let isbn = book.isbn else { return "" }
+            return isbn
+        }
+        return isbns
+    }
 }

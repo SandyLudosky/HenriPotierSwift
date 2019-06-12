@@ -10,10 +10,11 @@ import UIKit
 
 class BooksViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
+    var cart: Cart?
     @IBAction func addToCartAction(_ sender: UIBarButtonItem) {
        addToCart()
         guard dataSource.selectedBooks.count > 0 else { return }
-        let cart = Cart(books: dataSource.selectedBooks, offers: [], offer: nil)
+        cart = Cart(books: dataSource.selectedBooks)
         router?.pushToView(with: "goToCart", and: cart)
     }
     var dataSource = BooksDataSource(items: [])
@@ -68,7 +69,7 @@ extension BooksViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToCart" {
             guard let cartVC = segue.destination as? CartViewController else { return }
-            cartVC.books = dataSource.selectedBooks
+            cartVC.cart = cart
         }
     }
 }
