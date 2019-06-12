@@ -13,11 +13,12 @@ class CartPresenter: PresentationLogic {
     var viewVC: DisplayLogic?
     
     func showResults<Object>(with response: Model.Response<Object>) where Object : Decodable, Object : Encodable {
-        guard let object = response.result as? [Offer],
-              let offers = object as? [Offer] else {
-              viewVC?.error(viewModel: CartViewModel(with: [], offers: [], isError: true))
+        guard let offers = response.result as? [Offer] else {
+              viewVC?.error(viewModel: CartViewModel(with: [], isError: true))
             return
         }
-         viewVC?.success(viewModel: CartViewModel(with: [], offers: offers, isError: false))
+         var cartVM = CartViewModel(with: [],  isError: false)
+         cartVM.offers = offers
+         viewVC?.success(viewModel: cartVM)
     }
 }

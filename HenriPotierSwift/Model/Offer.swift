@@ -8,24 +8,34 @@
 
 import Foundation
 
-enum Type {
-    case percentage(value: Int), minus(value: Int), slice(value: Int,value: Int)
+enum Discount {
+    case percentage, minus, slice
     var string: String {
         switch self {
         case .percentage: return "percentage"
         case .minus: return "minus"
         case .slice: return "slice"
         }
-        return ""
     }
 }
 
 struct Offer: Codable  {
-    let type: String
-    let sliceValue:Int
-    let value: Int
+    let type: String?
+    var sliceValue:Int = 0
+    var value: Int = 0
+    var discountValue: Double = 0.0
+    var discount: Discount {
+        switch self.type {
+        case "percentage": return .percentage
+        case "minus": return .minus
+        case "slice": return .slice
+        default: break
+        }
+        return .percentage
+    }
 }
 
+//MARK - Codable
 extension Offer {
     enum CodingKeys: String, CodingKey {
         case type, sliceValue, value
@@ -41,5 +51,40 @@ extension Offer {
         try container.encode(type, forKey: .type)
         try container.encode(sliceValue, forKey: .sliceValue)
         try container.encode(value, forKey: .value)
+    }
+}
+
+extension Offer {
+    func calculate(with total: Double, type: Discount) -> Offer {
+        switch type {
+        case .percentage: return percentage(with: total, and: self.value)
+        case .minus: return minus(with: total, and: self.value)
+        case .slice: return slice(with: total, and: (self.value, self.sliceValue))
+        }
+    }
+}
+
+//MARK - Comparable
+extension Offer: Comparable {
+    static func < (lhs: Offer, rhs: Offer) -> Bool {
+        return lhs.discountValue < rhs.discountValue
+    }
+}
+
+//MARK - Private
+extension Offer {
+    private func percentage(with total: Double, and value: Int) -> Offer {
+        let discount = total - ((total * Double(value)) / 100)
+        return Offer(type: self.type, sliceValue: 0, value: self.value, discountValue: discount)
+    }
+    private func minus(with total: Double, and value: Int) -> Offer {
+        let discount = Double(total - Double(value))
+        return Offer(type: self.type, sliceValue: 0, value: self.value, discountValue: discount)
+    }
+    private func slice(with total: Double, and value: (Int,Int)) -> Offer {
+        let times = total / Double(value.0)
+        let minus = times * Double(value.1)
+        let discount = Double(total - minus)
+        return Offer(type: self.type, sliceValue: self.sliceValue, value: self.value, discountValue: discount)
     }
 }

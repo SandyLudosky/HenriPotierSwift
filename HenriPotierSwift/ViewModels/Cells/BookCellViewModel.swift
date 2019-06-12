@@ -26,7 +26,7 @@ class BookCellViewModel {
         self.title = book.title
         self.isbn = book.isbn
         guard let price = book.price else { return }
-        self.price = Double(price).format(f: "%.2f")
+        self.price = Double(price).format(f: "%.2f",with: "€") 
     }
 }
 

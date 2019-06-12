@@ -36,13 +36,13 @@ extension Sequence {
 
 
 extension Double {
-    func format(f: String) -> String {
-        return String(format: "€\(f)", self)
+    func format(f: String, with currency: String) -> String {
+        return String(format: "\(currency)\(f)", self)
     }
 }
 
 extension String {
-    func format(f: String) -> String {
-        return String(format: "€\(f)", self)
+    func format(f: String, with currency: String) -> String {
+        return String(format: "\(currency)\(f)", self)
     }
 }

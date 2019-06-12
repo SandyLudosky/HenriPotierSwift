@@ -41,7 +41,6 @@ extension BooksDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BookCell.identifier, for: indexPath) as? BookCell else { return UITableViewCell() }
-        cell.selectionStyle = .none
         let book = items[indexPath.row]
         let viewModel = BookCellViewModel(with: book)
         cell.configure(with: viewModel)

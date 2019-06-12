@@ -14,7 +14,7 @@ struct Rate: Comparable {
     }
     var value: Double = 0.0
     var discount: Int = 0
-    var type: Type
+    var type: Discount
     static func < (lhs: Rate, rhs: Rate) -> Bool {
         return lhs.value < rhs.value
     }
