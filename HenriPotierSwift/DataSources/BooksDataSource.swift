@@ -25,11 +25,12 @@ class BooksDataSource: NSObject {
         return items[indexPath.row]
     }
     
-    func select(_ cells: [UITableViewCell],_ tableView: UITableView) {
+    func select(_ cells: [UITableViewCell],_ tableView: UITableView) -> [Item] {
         selectedBooks = cells.map { cell -> Book? in
             guard let indexPath = tableView.indexPath(for: cell) else { return nil }
             return items[indexPath.row]
             } as! [Book]
+        return selectedBooks
     }
 }
 

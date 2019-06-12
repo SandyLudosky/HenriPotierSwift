@@ -19,4 +19,8 @@ struct Cart {
         }
         return isbns
     }
+    
+    mutating func add(_ items:[Item]) {
+        self.items = items
+    }
 }

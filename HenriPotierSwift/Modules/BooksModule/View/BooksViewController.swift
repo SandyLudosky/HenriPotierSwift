@@ -10,12 +10,10 @@ import UIKit
 
 class BooksViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
-    var cart: Cart?
+    var cart = Cart(items: [])
     @IBAction func addToCartAction(_ sender: UIBarButtonItem) {
-       addToCart()
-        guard dataSource.selectedBooks.count > 0 else { return }
-        cart = Cart(items: dataSource.selectedBooks)
-        router?.pushToView(with: "goToCart", and: cart)
+        addToCart()
+        router?.pushToView(with: "goToCart", and: cart as Any)
     }
     var dataSource = BooksDataSource(items: [])
    
@@ -51,7 +49,8 @@ class BooksViewController: BaseViewController {
         let checkedCells = cells.filter { cell -> Bool in
             cell.accessoryType == .checkmark
         }
-        dataSource.select(checkedCells, tableView)
+        let books = dataSource.select(checkedCells, tableView)
+        cart.add(books)
     }
 }
 
