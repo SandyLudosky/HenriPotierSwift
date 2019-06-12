@@ -81,12 +81,13 @@ extension CartViewController : UITableViewDelegate {
 //MARK - Private
 extension CartViewController {
     private func deleteAction(at indexPath: IndexPath) {
-        guard var vm = self.cartVM, var books = self.cart?.items as? [Book] else { return }
-        let title = books[indexPath.row].title
+        guard var vm = self.cartVM,
+              var books = self.cart?.items as? [Book],
+              let title = books[indexPath.row].title else { return }
         books.remove(at: indexPath.row)
         vm.books = books
         self.dataSource.update(with: vm)
         self.tableView.reloadData()
-        self.view.makeToast(message: "item \(String(describing: title)) removed", duration: HRToastDefaultDuration, position: .bottom)
+        self.view.makeToast(message: "item \(title.format(with: .bold)) removed", duration: HRToastDefaultDuration, position: .bottom)
     }
 }

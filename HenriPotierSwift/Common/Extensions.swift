@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+enum FontType {
+    case italic, bold, italicBold
+}
 extension URL {
     func encode() -> URL? {
         let stringURL = self.absoluteString
@@ -44,5 +47,20 @@ extension Double {
 extension String {
     func format(f: String, with currency: String) -> String {
         return String(format: "\(currency)\(f)", self)
+    }
+    
+    func format(with type: FontType) -> String {
+        let font = UIFont(name: "Avenir", size: 14.0)!
+        let italicsFont = UIFont(name: "Avenir-BookOblique", size: 14.0)!
+        let boldFont = UIFont(name: "Avenir-Heavy", size: 14.0)!
+        let boldItalicsFont = UIFont(name: "Avenir-HeavyOblique", size: 14.0)!
+        let attributedString = NSMutableAttributedString(string: self, attributes: [NSAttributedString.Key.font : font])
+        switch type {
+        case .italic: attributedString.addAttribute(NSAttributedString.Key.font, value: italicsFont, range: NSMakeRange(12, 7))
+        case .bold:  attributedString.addAttribute(NSAttributedString.Key.font, value: boldFont, range: NSMakeRange(7, 4))
+        case .italicBold: attributedString.addAttribute(NSAttributedString.Key.font, value: boldItalicsFont, range: NSMakeRange(20, 11))
+        }
+        
+        return attributedString.string
     }
 }
