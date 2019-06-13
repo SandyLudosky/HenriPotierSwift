@@ -17,8 +17,6 @@ class Request<Api: APIProtocol> {
 }
 
 class APIServiceRequest: Request<APIService> {}
-
-
 struct Model {
     struct Response<Object: Codable> {
         var result: Object?

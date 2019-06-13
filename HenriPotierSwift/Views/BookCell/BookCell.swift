@@ -20,6 +20,10 @@ class BookCell: BaseCell {
         isChecked = !isChecked
     }
     
+    func unCheck() {
+        isChecked = false
+    }
+    
     func configure(with viewModel: BookCellViewModel) {
         self.accessoryType = isChecked ? .checkmark : .none
         //self.coverImageView.image = viewModel.coverImage
@@ -28,6 +32,7 @@ class BookCell: BaseCell {
         guard let price = viewModel.price else { return }
         self.priceLabel.text = price
         setImage(with: viewModel.cover ?? "")
+        self.tintColor = .green
     }
 }
 

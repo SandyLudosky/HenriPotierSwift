@@ -10,6 +10,11 @@ import UIKit
 
 class CartViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBAction func backAction(_ sender: UIBarButtonItem) {
+        
+        navigationController?.dismiss(animated: true, completion: nil)
+    }
     var dataSource = CartDataSource(cart: nil)
     var cart: Cart?
     var isbns: [String] = []
@@ -72,9 +77,15 @@ extension CartViewController : UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            self.cart?.items.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .top)
         }
+    }
+}
+
+//MARK -Navigation
+extension CartViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
     }
 }
 
@@ -85,9 +96,10 @@ extension CartViewController {
               var books = self.cart?.items as? [Book],
               let title = books[indexPath.row].title else { return }
         books.remove(at: indexPath.row)
+        self.cart?.update(books)
         vm.books = books
         self.dataSource.update(with: vm)
         self.tableView.reloadData()
-        self.view.makeToast(message: "item \(title.format(with: .bold)) removed", duration: HRToastDefaultDuration, position: .bottom)
+        self.view.makeToast(message: "item \(title.format(with: .bold)) removed", duration: HRToastDefaultDuration, position: .bottom)  
     }
 }

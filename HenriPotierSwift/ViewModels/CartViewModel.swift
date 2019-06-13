@@ -34,17 +34,10 @@ extension CartViewModel {
 
     //SubTotal before discount
     var subTotal: Double {
-        var sum = 0.0
-        books.forEach { book in
-            guard let price = book.price else { return }
-            sum = sum + Double(price)
+        let sum = self.books.reduce(0) {
+            guard let price = $1.price else { return 0 }
+            return $0 + price
         }
-        /*
-         let sum = self.books.reduce(0) {
-         guard let price = $1.price else { return 0 }
-         return $0 + price
-         }
-         */
         return Double(sum)
     }
 

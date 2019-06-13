@@ -15,11 +15,17 @@ class BooksViewController: BaseViewController {
     @IBAction func addToCartAction(_ sender: UIBarButtonItem) {
        
     }
-    var dataSource = BooksDataSource(items: [])
+    var dataSource = ItemsDataSource(items: [])
    
     override func viewDidLoad() {
         super.viewDidLoad()
         displayResults()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //update tableView with books in cart
+         button.setTitle("\(cart.count) ", for: .normal)
     }
     
     override func configureView() {
@@ -30,7 +36,6 @@ class BooksViewController: BaseViewController {
     }
     
     func configureCartButton() {
-       
         button.setTitle("\(cart.count) ", for: .normal)
         button.setImage(UIImage(named: "shopping-cart"), for: .normal)
         button.sizeToFit()
@@ -60,8 +65,6 @@ class BooksViewController: BaseViewController {
             view.makeToast(message: "\(String(describing: viewModel.message))", duration: HRToastDefaultDuration, position: .bottom)
         }
     }
-    
-   
 }
 
 //MARK - UITableViewDelegate
@@ -71,17 +74,24 @@ extension BooksViewController: UITableViewDelegate  {
         cell.toggle()
         tableView.reloadData()
         let count = getSelectedCells().count
-        button.setTitle("-\(count)", for: .normal)
+        button.setTitle("\(count)", for: .normal)
     }
 }
 
-
+//MARK -Navigation
 extension BooksViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToCart" {
             guard let cartVC = segue.destination as? CartViewController else { return }
             cartVC.cart = cart
         }
+    }
+    
+    @IBAction func unwindFromCartVC(_ sender: UIStoryboardSegue) {
+        guard let source = sender.source as? CartViewController, let cart = source.cart else { return }
+        self.cart = cart
+        self.dataSource.updateSelection(cart.selected, tableView.visibleCells)
+        tableView.reloadData()
     }
 }
 

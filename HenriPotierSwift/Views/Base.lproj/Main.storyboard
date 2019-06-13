@@ -58,7 +58,7 @@
             </objects>
             <point key="canvasLocation" x="1828.985507246377" y="59.598214285714285"/>
         </scene>
-        <!--Cart View Controller-->
+        <!--Title-->
         <scene sceneID="67q-Ec-TTa">
             <objects>
                 <viewController storyboardIdentifier="CartViewController" id="2tz-Ij-d1r" customClass="CartViewController" customModule="HenriPotierSwift" customModuleProvider="target" sceneMemberID="viewController">
@@ -98,11 +98,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pXJ-Pp-6M2"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="AcM-yQ-PBg">
+                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="jCh-2n-68B">
+                            <connections>
+                                <action selector="backAction:" destination="2tz-Ij-d1r" id="gG8-x4-EiE"/>
+                                <segue destination="DIK-mv-kPg" kind="unwind" unwindAction="unwindFromCartVC:" id="6sv-p0-y3H"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="rbc-zC-V9C" id="qwu-Ha-XzI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ug0-Xy-MFY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="DIK-mv-kPg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2679.7101449275365" y="59.598214285714285"/>
         </scene>

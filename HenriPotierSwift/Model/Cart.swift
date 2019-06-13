@@ -10,7 +10,10 @@ import Foundation
 
 struct Cart {
     var items:[Item] = []
-    var count = 0
+    var selected: [Item] = []
+    var count:Int {
+       return items.count
+    }
     func getISBNs() -> [String] {
         guard let books = items as? [Book] else { return []}
         let isbns = books.map { book -> String in
@@ -21,6 +24,11 @@ struct Cart {
     }
     
     mutating func add(_ items:[Item]) {
+        self.items = items
+    }
+    
+    mutating func update(_ items:[Item]) {
+        self.selected = items
         self.items = items
     }
     
