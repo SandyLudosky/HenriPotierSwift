@@ -11,10 +11,11 @@ import Foundation
 typealias Handler = (ResultObject<Any>) -> Void
 typealias ResultCollectionHandler = (ResultCollection<Any>) -> Void
 protocol DataManagerProtocol {
-    func get(for service: APIService, completion: @escaping Handler)
+    associatedtype P
+    func get(for service: P, completion: @escaping Handler)
 }
 class BaseDataWorker {
-    let client = APIClient<APIService>()
+    var client = APIClient<APIService>()
     func get(for service: APIService, completion: @escaping Handler) {
         client.get(with: service) { results in
             switch results {

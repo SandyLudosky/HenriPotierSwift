@@ -8,6 +8,7 @@ target 'HenriPotierSwift' do
   # Pods for HenriPotierSwift
   pod 'SDWebImage', '~> 5.0'
   pod 'ReachabilitySwift'
+  pod 'SwiftGen'
   target 'HenriPotierSwiftTests' do
     inherit! :search_paths
     # Pods for testing

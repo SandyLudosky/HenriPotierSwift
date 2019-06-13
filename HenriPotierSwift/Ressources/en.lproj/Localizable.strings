@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  HenriPotierSwift
+
+  Created by Sandy on 2019-06-13.
+  Copyright © 2019 Sandy. All rights reserved.
+*/
+
+
+"subTotal" = "Subtotal";
+"discount" = "Discount";
+"total" = "Total";
+"unknown" =  "unknow";
+"invalidData" = "data is invalid";
+"invalidRequest" = "request is invalid";
+"encodingError" = "encoding error";
+"notFound" = "no api call response";
+"itemInvalid" = "no api call response";
+"responsUnsucessful" =  "no api call response";
+"responseFailure" = "no api call response";
+"jsonParsingFailure" = "Error Parsing Json";
+"invalidURL" = "URL is invalid";
+"noNetwork" = "No Network Available";
+

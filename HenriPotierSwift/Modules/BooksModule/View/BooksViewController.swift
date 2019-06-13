@@ -16,7 +16,6 @@ class BooksViewController: BaseViewController {
        
     }
     var dataSource = ItemsDataSource(items: [])
-   
     override func viewDidLoad() {
         super.viewDidLoad()
         displayResults()

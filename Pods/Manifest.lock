@@ -3,20 +3,24 @@ PODS:
   - SDWebImage (5.0.3):
     - SDWebImage/Core (= 5.0.3)
   - SDWebImage/Core (5.0.3)
+  - SwiftGen (6.1.0)
 
 DEPENDENCIES:
   - ReachabilitySwift
   - SDWebImage (~> 5.0)
+  - SwiftGen
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - ReachabilitySwift
     - SDWebImage
+    - SwiftGen
 
 SPEC CHECKSUMS:
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   SDWebImage: d4f87d7d36c8a4d9f9459dc282e0caa057fdf935
+  SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
 
-PODFILE CHECKSUM: 6cc04272905842e9ae2a3df6c01efac4cf6eb2b1
+PODFILE CHECKSUM: 6d494fddd445459bb8d43f492fab412fc572babb
 
 COCOAPODS: 1.6.2

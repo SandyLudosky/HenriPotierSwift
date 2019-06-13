@@ -10,11 +10,6 @@ import UIKit
 
 class CartViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
-    
-    @IBAction func backAction(_ sender: UIBarButtonItem) {
-        
-        navigationController?.dismiss(animated: true, completion: nil)
-    }
     var dataSource = CartDataSource(cart: nil)
     var cart: Cart?
     var isbns: [String] = []
@@ -38,8 +33,8 @@ class CartViewController: BaseViewController {
     }
     
     override func configureView() {
-        tableView.dataSource = dataSource
         tableView.delegate = self
+        tableView.dataSource = dataSource
         tableView.register(UINib(nibName: "CartCell", bundle: nil), forCellReuseIdentifier: CartCell.identifier)
         tableView.register(UINib(nibName: "BookCell", bundle: nil), forCellReuseIdentifier: BookCell.identifier)
     }

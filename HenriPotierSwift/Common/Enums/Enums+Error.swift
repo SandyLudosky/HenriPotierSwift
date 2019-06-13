@@ -35,17 +35,17 @@ public enum ErrorHandler: Error {
     
     public var description: String {
         switch self {
-        case .unknownError: return NSLocalizedString("Unknown error.", comment: "")
-        case .itemNotFound:  return NSLocalizedString("Item not found.", comment: "")
-        case .itemInvalid: return NSLocalizedString("Item invalid.", comment: "")
-        case .invalidData: return NSLocalizedString("Invalid Data", comment: "")
-        case .responseUnsuccessful: return NSLocalizedString("Unsuccessful Response", comment: "")
+        case .unknownError: return NSLocalizedString(L10n.unknown.description, comment: "")
+        case .itemNotFound:  return NSLocalizedString(L10n.notFound.description, comment: "")
+        case .itemInvalid: return NSLocalizedString(L10n.itemInvalid.description, comment: "")
+        case .invalidData: return NSLocalizedString(L10n.invalidData.description, comment: "")
+        case .responseUnsuccessful: return NSLocalizedString(L10n.responsUnsucessful.description, comment: "")
         case .responseFailure(let statusCode, let code): return NSLocalizedString("\(statusCode) - status code: \(code)", comment: "")
-        case .jsonParsingFailure: return NSLocalizedString("Error Parsing JSON", comment: "")
-        case .invalidURL: return NSLocalizedString("Invalid URL", comment: "")
-        case .encodingError: return NSLocalizedString("Error Encoding URL", comment: "")
-        case .invalidRequest: return NSLocalizedString("Invalid Request", comment: "")
-        case .noNetwork: return NSLocalizedString("No Network Available", comment: "")
+        case .jsonParsingFailure: return NSLocalizedString(L10n.jsonParsingFailure.description, comment: "")
+        case .invalidURL: return NSLocalizedString(L10n.invalidURL.description, comment: "")
+        case .encodingError: return NSLocalizedString(L10n.encodingError.description, comment: "")
+        case .invalidRequest: return NSLocalizedString(L10n.invalidRequest.description, comment: "")
+        case .noNetwork: return NSLocalizedString(L10n.noNetwork.description, comment: "")
         }
     }
 }

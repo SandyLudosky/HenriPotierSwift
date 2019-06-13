@@ -1,0 +1,22 @@
+/* 
+  Localizablle.strings
+  HenriPotierSwift
+
+  Created by Sandy on 2019-06-13.
+  Copyright © 2019 Sandy. All rights reserved.
+*/
+
+"subTotal" = "Sous total";
+"discount" = "Réduction";
+"total" = "Total";
+"unknown" = "erreur inconnue";
+"invalidData" = "données invalides";
+"invalidRequest" = "requête invalide";
+"encodingError" = "erreur encodage";
+"notFound" = "item non trouvé";
+"itemInvalid" = "item invalide";
+"responsUnsucessful" = "erreur response";
+"responseFailure" = "erreur response";
+"jsonParsingFailure" = "Erreur parsing json";
+"invalidURL" = "URL invalide";
+"noNetwork" = "Aucune connexion réseau";

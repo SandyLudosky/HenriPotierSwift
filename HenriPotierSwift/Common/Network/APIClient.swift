@@ -13,7 +13,6 @@ class APIClient<T: APIProtocol> {
     public typealias ResultHandler = (ResultObject<Any>) -> Void
     func get(with service: T, block: @escaping ResponseHandler) {
         print(service.request?.url)
-       
         let task = runTask(with: service) { response in
             self.parseResponse(response, completion: block)
         }
