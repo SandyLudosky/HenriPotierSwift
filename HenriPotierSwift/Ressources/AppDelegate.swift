@@ -15,9 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+       
         guard NetworkManager.isConnected else {
-            print(ErrorHandler.noNetwork.description)
+            window?.rootViewController?.view.makeToast(message: ErrorHandler.noNetwork.description, duration: HRToastDefaultDuration, position: .bottom)
             return false
         }
         

@@ -14,11 +14,6 @@ class HenriPotierSwiftTests: XCTestCase {
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
     func testSliceOperation() {
         offer = Offer(type: "slice", sliceValue: 100, value: 12, discountValue: 0)
         offer = offer?.calculate(with: 100, type: .slice)
@@ -42,12 +37,4 @@ class HenriPotierSwiftTests: XCTestCase {
         print(discount)
         XCTAssertTrue((discount != 97), "discounted value should be \(100 - ((100 * 5) / 100))")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

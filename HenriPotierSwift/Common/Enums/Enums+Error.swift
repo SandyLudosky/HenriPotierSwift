@@ -33,7 +33,7 @@ public enum ErrorHandler: Error {
     case noNetwork
 
     
-    public var description: String? {
+    public var description: String {
         switch self {
         case .unknownError: return NSLocalizedString("Unknown error.", comment: "")
         case .itemNotFound:  return NSLocalizedString("Item not found.", comment: "")
@@ -45,7 +45,7 @@ public enum ErrorHandler: Error {
         case .invalidURL: return NSLocalizedString("Invalid URL", comment: "")
         case .encodingError: return NSLocalizedString("Error Encoding URL", comment: "")
         case .invalidRequest: return NSLocalizedString("Invalid Request", comment: "")
-        case .noNetwork: return NSLocalizedString("No Network", comment: "")
+        case .noNetwork: return NSLocalizedString("No Network Available", comment: "")
         }
     }
 }
