@@ -244,10 +244,10 @@
 			isa = PBXGroup;
 			children = (
 				26A1C68322AEBEDC001AD4BA /* Model.swift */,
+				26A1C6CB22B17EA2001AD4BA /* Item.swift */,
 				26A1C68522AEBF99001AD4BA /* Book.swift */,
 				26A1C68C22AEC1AB001AD4BA /* Offer.swift */,
 				26A1C6C722B011B5001AD4BA /* Cart.swift */,
-				26A1C6CB22B17EA2001AD4BA /* Item.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

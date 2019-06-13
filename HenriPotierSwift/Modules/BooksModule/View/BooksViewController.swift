@@ -24,7 +24,6 @@ class BooksViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //update tableView with books in cart
          button.setTitle("\(cart.count) ", for: .normal)
     }
     

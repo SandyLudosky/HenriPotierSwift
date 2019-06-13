@@ -59,7 +59,7 @@ extension Offer {
         switch type {
         case .percentage: return percentage(with: total, and: self.value)
         case .minus: return minus(with: total, and: self.value)
-        case .slice: return slice(with: total, and: (self.value, self.sliceValue))
+        case .slice: return slice(with: total, and: (self.sliceValue, self.value))
         }
     }
 }
@@ -81,9 +81,12 @@ extension Offer {
         let discount = Double(total - Double(value))
         return Offer(type: self.type, sliceValue: 0, value: self.value, discountValue: discount)
     }
-    private func slice(with total: Double, and value: (Int,Int)) -> Offer {
-        let times = total / Double(value.0)
-        let minus = times * Double(value.1)
+    private func slice(with total: Double, and value: (sliceValue: Int, value: Int)) -> Offer {
+        var minus = 0.0
+        if total >= Double(value.sliceValue) {
+            let times = total / Double(value.sliceValue)
+            minus = times * Double(value.value)
+        }
         let discount = Double(total - minus)
         return Offer(type: self.type, sliceValue: self.sliceValue, value: self.value, discountValue: discount)
     }
