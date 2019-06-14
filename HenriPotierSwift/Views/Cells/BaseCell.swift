@@ -9,8 +9,17 @@
 import UIKit
 
 class BaseCell: UITableViewCell {
+    var isChecked = false
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
+    }
+    
+    func toggle() {
+        isChecked = !isChecked
+    }
+    
+    func unCheck() {
+        isChecked = false
     }
 }

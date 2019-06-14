@@ -26,6 +26,7 @@ class ItemsDataSource: NSObject {
     }
     
     func select(_ cells: [UITableViewCell],_ tableView: UITableView) -> [Item] {
+        
         selectedBooks = cells.map { cell -> Item? in
             guard let indexPath = tableView.indexPath(for: cell) else { return nil }
             return items[indexPath.row]
@@ -33,15 +34,25 @@ class ItemsDataSource: NSObject {
         return selectedBooks
     }
     
-    func updateSelection(_ items: [Item],_ cells: [UITableViewCell]) {
-        for (item, cell) in zip(items, cells) {
-            if let book = item as? Book, let bookCell = cell as? BookCell {
-                bookCell.unCheck()
-                print("\(book.isbn) \(bookCell.isbnLabel.text )")
-                if book.isbn == bookCell.isbnLabel.text {
-                    bookCell.toggle()
+    func updateSelection(_ items: [Book],_ cells: [BookCell], tableView: UITableView) {
+        cells.uncheck()
+        
+        self.items.forEach { item1 in
+            items.forEach({ item2 in
+                let text1 = item1.title?.trim()
+                let text2 = item2.title?.trim()
+                if text1 == text2 {
+                    let index = self.items.firstIndex(where: { item -> Bool in
+                        item.title == item2.title
+                    })
+                    let indexPath = IndexPath(item: index ?? 0, section: 0)
+                    cells.forEach { cell in
+                        let cell = tableView.cellForRow(at: indexPath) as? BookCell
+                        cell?.toggle()
+                        
+                    }
                 }
-            }
+            })
         }
     }
 }

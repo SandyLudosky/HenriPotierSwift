@@ -11,19 +11,14 @@ import UIKit
 class BooksViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     var cart = Cart([])
-    let button = UIButton(type: .system)
+    let button = CartButton()
     @IBAction func addToCartAction(_ sender: UIBarButtonItem) {
-       
+       addToCart()
     }
     var dataSource = ItemsDataSource(items: [])
     override func viewDidLoad() {
         super.viewDidLoad()
         displayResults()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-         button.setTitle("\(cart.count) ", for: .normal)
     }
     
     override func configureView() {
@@ -34,9 +29,8 @@ class BooksViewController: BaseViewController {
     }
     
     func configureCartButton() {
-        button.setTitle("\(cart.count) ", for: .normal)
-        button.setImage(UIImage(named: "shopping-cart"), for: .normal)
-        button.sizeToFit()
+        guard let image = UIImage(named: "shopping-bag") else { return }
+        button.configure(with: image, count: cart.count, color: Color.amethyste)
         button.addTarget(self, action: #selector(navigateToCart), for: .touchUpInside)
         let rightButton = UIBarButtonItem(customView: button)
         navigationItem.rightBarButtonItem = rightButton
@@ -44,6 +38,8 @@ class BooksViewController: BaseViewController {
     
     @objc func navigateToCart() {
         addToCart()
+        let books = dataSource.select(getSelectedCells(), tableView)
+        cart.update(books)
         router?.pushToView(with: "goToCart", and: cart as Any)
     }
   
@@ -84,11 +80,11 @@ extension BooksViewController {
             cartVC.cart = cart
         }
     }
-    
     @IBAction func unwindFromCartVC(_ sender: UIStoryboardSegue) {
         guard let source = sender.source as? CartViewController, let cart = source.cart else { return }
         self.cart = cart
-        self.dataSource.updateSelection(cart.selected, tableView.visibleCells)
+        self.button.setTitle("\(cart.count)", for: .normal)
+        self.dataSource.updateSelection(self.cart.selected as! [Book], tableView?.visibleCells as! [BookCell], tableView: tableView)
         tableView.reloadData()
     }
 }

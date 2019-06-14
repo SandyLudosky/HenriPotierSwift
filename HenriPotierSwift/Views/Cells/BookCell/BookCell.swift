@@ -10,18 +10,13 @@ import UIKit
 
 class BookCell: BaseCell {
     static let identifier = "bookCellIdentifier"
-    var isChecked = false
+  
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var isbnLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
-    func toggle() {
-        isChecked = !isChecked
-    }
-    func unCheck() {
-        isChecked = false
-    }
+  
     
     func configure(with viewModel: BookCellViewModel) {
         self.accessoryType = isChecked ? .checkmark : .none
@@ -30,7 +25,7 @@ class BookCell: BaseCell {
         guard let price = viewModel.price else { return }
         self.priceLabel.text = price
         setImage(with: viewModel.cover ?? "")
-        self.tintColor = .green
+        self.tintColor = Color.amethyste
     }
 }
 

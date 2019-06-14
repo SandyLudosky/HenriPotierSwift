@@ -20,6 +20,10 @@ class CartViewController: BaseViewController {
         displayResults()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     override func setup() {
         let viewController = self
         let presenter = CartPresenter()

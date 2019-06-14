@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -55,6 +55,8 @@
 		26CAA0A022B2F57D000CFE36 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CAA09F22B2F57D000CFE36 /* Localizable.swift */; };
 		26CAA0A522B2F677000CFE36 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26CAA0A722B2F677000CFE36 /* Localizable.strings */; };
 		26CAA0AA22B30228000CFE36 /* AnotherAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CAA0A922B30228000CFE36 /* AnotherAPIService.swift */; };
+		26CAA0AC22B424EE000CFE36 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CAA0AB22B424EE000CFE36 /* Color.swift */; };
+		26CAA0AE22B42539000CFE36 /* CartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CAA0AD22B42539000CFE36 /* CartButton.swift */; };
 		D20176A82A78AAD2C1B61816 /* Pods_HenriPotierSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A32E90BB1E628814E6625281 /* Pods_HenriPotierSwiftTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -132,6 +134,8 @@
 		26CAA0A622B2F677000CFE36 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		26CAA0A822B2F67D000CFE36 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		26CAA0A922B30228000CFE36 /* AnotherAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherAPIService.swift; sourceTree = "<group>"; };
+		26CAA0AB22B424EE000CFE36 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		26CAA0AD22B42539000CFE36 /* CartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartButton.swift; sourceTree = "<group>"; };
 		4D67F007198A1F840A5F9CDD /* Pods-HenriPotierSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HenriPotierSwift.debug.xcconfig"; path = "Target Support Files/Pods-HenriPotierSwift/Pods-HenriPotierSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		82F8FA93E02C1B2DE04D8F62 /* Pods_HenriPotierSwiftUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HenriPotierSwiftUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A32E90BB1E628814E6625281 /* Pods_HenriPotierSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HenriPotierSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,6 +249,7 @@
 				26A1C67B22AEBD89001AD4BA /* Extensions.swift */,
 				26A1C67A22AEBD89001AD4BA /* Protocols.swift */,
 				26A1C6D122B1A274001AD4BA /* ToastManager.swift */,
+				26CAA0AB22B424EE000CFE36 /* Color.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -359,6 +364,7 @@
 				26CAA09B22B2EE52000CFE36 /* Cells */,
 				26A1C64422AEBACD001AD4BA /* Main.storyboard */,
 				26A1C64722AEBACE001AD4BA /* Assets.xcassets */,
+				26CAA0AD22B42539000CFE36 /* CartButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -718,6 +724,7 @@
 				26A1C6B522AF09DD001AD4BA /* CartViewController.swift in Sources */,
 				26A1C68B22AEC182001AD4BA /* CartViewModel.swift in Sources */,
 				26A1C69D22AECE2F001AD4BA /* BaseViewController.swift in Sources */,
+				26CAA0AE22B42539000CFE36 /* CartButton.swift in Sources */,
 				26A1C68622AEBF99001AD4BA /* Book.swift in Sources */,
 				26A1C6C622AF20E7001AD4BA /* CartDataSource.swift in Sources */,
 				26A1C6C022AF127D001AD4BA /* CartDataWorker.swift in Sources */,
@@ -726,6 +733,7 @@
 				26A1C6D022B19EF7001AD4BA /* Reachability.swift in Sources */,
 				26A1C68122AEBD89001AD4BA /* Enums.swift in Sources */,
 				26A1C67E22AEBD89001AD4BA /* Protocols.swift in Sources */,
+				26CAA0AC22B424EE000CFE36 /* Color.swift in Sources */,
 				26A1C69F22AECED8001AD4BA /* BooksPresenter.swift in Sources */,
 				26A1C67F22AEBD89001AD4BA /* Extensions.swift in Sources */,
 				26A1C6CA22B043C9001AD4BA /* BaseCell.swift in Sources */,

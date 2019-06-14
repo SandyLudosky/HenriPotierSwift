@@ -63,4 +63,16 @@ extension String {
         
         return attributedString.string
     }
+    
+    func trim() -> String {
+        return self.replacingOccurrences(of: "\"", with: "", options: NSString.CompareOptions.literal, range:nil)
+    }
+}
+
+extension Array where Element:BaseCell {
+    func uncheck() {
+        self.forEach { cell in
+           cell.unCheck()
+        }
+    }
 }
