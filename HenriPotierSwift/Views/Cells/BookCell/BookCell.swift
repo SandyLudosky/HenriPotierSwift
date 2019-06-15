@@ -16,8 +16,6 @@ class BookCell: BaseCell {
     @IBOutlet weak var isbnLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
-  
-    
     func configure(with viewModel: BookCellViewModel) {
         self.accessoryType = isChecked ? .checkmark : .none
         self.titleLabel.text = viewModel.title

@@ -13,10 +13,11 @@ import SDWebImage
 class CellViewModel {
     var title: String?
     var price: String?
+    var priceDouble: Double?
     init(with item: Item) {
         self.title = item.title
-        guard let price = item.price else { return }
-        self.price = Double(price).format(f: "%.2f",with: "€")
+        self.price = Double(item.price).format(f: "%.2f",with: "€")
+        self.priceDouble = item.unitPrice
     }
 }
 class BookCellViewModel: CellViewModel {

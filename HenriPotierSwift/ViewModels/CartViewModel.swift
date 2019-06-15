@@ -13,16 +13,15 @@ struct CartViewModel: ViewModelProtocol {
     var isError: Bool
     var message: String?
     var books: [Book] = []
-    var computedOffers: [Offer] = []
-    var sorted: [Offer] = []
-    var bestOffer: Offer?
-    var offers: [Offer] = [] {
+    var computedOffers: [Offer] = [] {
         didSet {
-            computedOffers = calculate()
             sorted = sort()
             bestOffer = getBestOffer()
         }
     }
+    var sorted: [Offer] = []
+    var bestOffer: Offer?
+    var offers: [Offer] = []
 }
 
 extension CartViewModel {
@@ -31,17 +30,19 @@ extension CartViewModel {
         self.message = isError.description
         self.books = books
     }
+    
+    mutating func calculateCartValue() {
+        computedOffers = calculate()
+    }
 
     //SubTotal before discount
     var subTotal: Double {
-        let sum = self.books.reduce(0) {
-            guard let price = $1.price else { return 0 }
-            return $0 + price
+        let sum: Double = self.books.reduce(0) {
+            return $0 + $1.price
         }
-        return Double(sum)
+        return sum
     }
 
-    
     //best discount
     var discount: Double {
        guard let value = bestOffer?.value else { return 0.0 }
@@ -56,24 +57,22 @@ extension CartViewModel {
         return subTotal - discount
     }
     
-
-    
-    mutating func calculate() -> [Offer]  {
+    private mutating func calculate() -> [Offer]  {
         let computed = offers.map { offer -> Offer in
             switch offer.discount {
-            case .percentage: return offer.calculate(with: total, type: .percentage)
-            case .minus: return offer.calculate(with: total, type: .minus)
-            case .slice: return offer.calculate(with: total, type: .slice)
+            case .percentage: return offer.calculate(with: subTotal, type: .percentage)
+            case .minus: return offer.calculate(with: subTotal, type: .minus)
+            case .slice: return offer.calculate(with: subTotal, type: .slice)
             }
         }
         return computed
     }
     
-    mutating func sort() -> [Offer] {
+    private mutating func sort() -> [Offer] {
         return computedOffers.sorted()
     }
     
-    func getBestOffer() -> Offer {
+     private func getBestOffer() -> Offer {
         guard let best = sorted.first else { return Offer(type: nil, sliceValue: 0, value: 0, discountValue: 0.0) }
         return best
     }

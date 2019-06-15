@@ -21,8 +21,11 @@ struct CartCellViewModel {
         return subTotal.format(f: "%.2f",with: "€") 
     }
     var discountValueString: String {
-        guard let discount = self.cart?.discount else { return "" }
-        return "- \(discount.format(f: "%.2f",with: ""))"
+        guard let discount =  Double(self.cart?.bestOffer?.value ?? 0) as? Double else { return "" }
+        if cart?.bestOffer?.discount == .percentage {
+            return "- \(String(describing: self.cart?.bestOffer?.value)) %" + discount.format(f: "%.2f",with: "")
+        }
+        return "-" + discount.format(f: "%.2f",with: "")
     }
     var totalValueString: String {
         guard let total = self.cart?.total else { return "" }

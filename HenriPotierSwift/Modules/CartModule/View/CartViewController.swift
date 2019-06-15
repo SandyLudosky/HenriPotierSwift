@@ -10,8 +10,10 @@ import UIKit
 
 class CartViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
-    var dataSource = CartDataSource(cart: nil)
+    var carTableView: UITableView!
+    var dataSource:CartDataSource?
     var cart: Cart?
+    var offers = [Offer]()
     var isbns: [String] = []
     var cartVM: CartViewModel?
     override func viewDidLoad() {
@@ -37,10 +39,13 @@ class CartViewController: BaseViewController {
     }
     
     override func configureView() {
+        carTableView = tableView
+        dataSource = CartDataSource(cart: cartVM, carTableView)
+        dataSource?.delegate = self
         tableView.delegate = self
         tableView.dataSource = dataSource
         tableView.register(UINib(nibName: "CartCell", bundle: nil), forCellReuseIdentifier: CartCell.identifier)
-        tableView.register(UINib(nibName: "BookCell", bundle: nil), forCellReuseIdentifier: BookCell.identifier)
+        tableView.register(UINib(nibName: "BookSelectedCell", bundle: nil), forCellReuseIdentifier: BookSelectedCell.identifier)
     }
     
     override func displayResults() {
@@ -57,8 +62,11 @@ class CartViewController: BaseViewController {
             let selectedBooks = cart?.items as? [Book] else { return }
         cartViewModel.books = selectedBooks
         cartVM = cartViewModel
-        self.dataSource.update(with: cartVM)
-        self.tableView.reloadData()
+        cartVM?.calculateCartValue()
+        DispatchQueue.main.async {
+            self.dataSource?.update(with: self.cartVM)
+            self.tableView.reloadData()
+        }
     }
     
     override func error<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol {
@@ -69,11 +77,13 @@ class CartViewController: BaseViewController {
 }
 extension CartViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let DeleteAction = UITableViewRowAction(style: .default, title: "Delete" , handler: { (action:UITableViewRowAction, indexPath: IndexPath) -> Void in
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete" , handler: { (action:UITableViewRowAction, indexPath: IndexPath) -> Void in
             self.deleteAction(at: indexPath)
         })
-        return [DeleteAction]
+        deleteAction.backgroundColor = Color.amethyste
+        return [deleteAction]
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.deleteRows(at: [indexPath], with: .top)
@@ -88,6 +98,15 @@ extension CartViewController {
     }
 }
 
+//MARK - CartDelegate
+extension CartViewController: CartDelegate {
+    func updateCart() {
+        cartVM?.calculateCartValue()
+        dataSource?.update(with: cartVM)
+        tableView.reloadData()
+    }
+}
+
 //MARK - Private
 extension CartViewController {
     private func deleteAction(at indexPath: IndexPath) {
@@ -97,7 +116,7 @@ extension CartViewController {
         books.remove(at: indexPath.row)
         self.cart?.update(books)
         vm.books = books
-        self.dataSource.update(with: vm)
+        self.dataSource?.update(with: vm)
         self.tableView.reloadData()
         self.view.makeToast(message: "item \(title.format(with: .bold)) removed", duration: HRToastDefaultDuration, position: .bottom)  
     }

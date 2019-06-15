@@ -9,10 +9,17 @@
 import Foundation
 import UIKit
 
+protocol CartDelegate {
+    func updateCart()
+}
+
 class CartDataSource: NSObject {
     var cartVM: CartViewModel?
-    init(cart: CartViewModel?) {
+    var tableView: UITableView!
+    var delegate: CartDelegate?
+    init(cart: CartViewModel?,_ tableView: UITableView) {
         self.cartVM = cart
+        self.tableView = tableView
         super.init()
     }
     // MARK: - Helper
@@ -31,10 +38,11 @@ extension CartDataSource: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: BookCell.identifier, for: indexPath) as? BookCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: BookSelectedCell.identifier, for: indexPath) as? BookSelectedCell else { return UITableViewCell() }
             guard let books = cartVM?.books else { return UITableViewCell() }
             let book = books[indexPath.row]
             cell.configure(with: BookCellViewModel(with: book))
+            cell.delegate = self
             return cell
         }
         if indexPath.section == 1 {
@@ -46,3 +54,16 @@ extension CartDataSource: UITableViewDataSource {
         return UITableViewCell()
     }
 }
+
+extension CartDataSource: CartValueDelegate {
+    func updateCart(_ cell: BookSelectedCell, with qty: Int, and price: Double) {
+        guard let indexPath = tableView.indexPath(for: cell),
+              let books = cartVM?.books,
+              let book = books[indexPath.row] as? Book else { return }
+        book.price = price * Double(qty)
+        cartVM?.books.remove(at: indexPath.row)
+        cartVM?.books.insert(book, at: indexPath.row)
+        delegate?.updateCart()
+    }
+}
+

@@ -24,13 +24,13 @@ class Book: Item, Codable {
         isbn = try values.decodeIfPresent(String.self, forKey: .isbn) ?? ""
         cover = try values.decodeIfPresent(String.self, forKey: .cover) ?? ""
         synopsis = try values.decodeIfPresent([String].self, forKey: .synopsis) ?? []
-        super.init(title: title, price: price)
+        super.init(title: title, unitPrice: Double(price))
     }
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(isbn, forKey: .isbn)
         try container.encode(title, forKey: .title)
-        try container.encode(price, forKey: .price)
+        try container.encode(unitPrice, forKey: .price)
         try container.encode(cover, forKey: .cover)
         try container.encode(synopsis, forKey: .synopsis)
     }
