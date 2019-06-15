@@ -25,12 +25,4 @@ class BooksInteractor: BusinessLogic {
             }
         })
     }
-    
-    func addToCart(_ dataSource: ItemsDataSource,_ tableView: UITableView) {
-        let cells = tableView.visibleCells
-        let checkedCells = cells.filter { cell -> Bool in
-            cell.accessoryType == .checkmark
-        }
-        dataSource.select(checkedCells, tableView)
-    }
 }

@@ -18,7 +18,6 @@ enum Discount {
         }
     }
 }
-
 struct Offer: Codable  {
     let type: String?
     var sliceValue:Int = 0
@@ -34,7 +33,6 @@ struct Offer: Codable  {
         return .percentage
     }
 }
-
 //MARK - Codable
 extension Offer {
     enum CodingKeys: String, CodingKey {
@@ -53,7 +51,6 @@ extension Offer {
         try container.encode(value, forKey: .value)
     }
 }
-
 extension Offer {
     func calculate(with total: Double, type: Discount) -> Offer {
         switch type {
@@ -63,14 +60,12 @@ extension Offer {
         }
     }
 }
-
 //MARK - Comparable
 extension Offer: Comparable {
     static func < (lhs: Offer, rhs: Offer) -> Bool {
         return lhs.discountValue < rhs.discountValue
     }
 }
-
 //MARK - Private
 extension Offer {
     private func percentage(with total: Double, and value: Int) -> Offer {

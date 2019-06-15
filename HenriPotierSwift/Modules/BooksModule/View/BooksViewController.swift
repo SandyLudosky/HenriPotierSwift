@@ -20,14 +20,12 @@ class BooksViewController: BaseViewController {
         super.viewDidLoad()
         displayResults()
     }
-    
     override func configureView() {
        tableView.dataSource = dataSource
        tableView.delegate = self
        tableView.register(UINib(nibName: "BookCell", bundle: nil), forCellReuseIdentifier: BookCell.identifier)
        configureCartButton()
     }
-    
     func configureCartButton() {
         guard let image = UIImage(named: "shopping-bag") else { return }
         button.configure(with: image, count: cart.count, color: Color.amethyste)
@@ -35,25 +33,21 @@ class BooksViewController: BaseViewController {
         let rightButton = UIBarButtonItem(customView: button)
         navigationItem.rightBarButtonItem = rightButton
     }
-    
     @objc func navigateToCart() {
         addToCart()
         let books = dataSource.select(getSelectedCells(), tableView)
         cart.update(books)
         router?.pushToView(with: "goToCart", and: cart as Any)
     }
-  
     override func displayResults() {
         interactor?.fetch(with: APIServiceRequest(with: .book))
     }
-    
     override func success<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol {
         guard let booksViewModel = viewModel as? BooksViewModel,
               let books = booksViewModel.items else { return }
         self.dataSource.update(with: books)
         self.tableView.reloadData()
     }
-    
     override func error<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol {
         if viewModel.isError {
             view.makeToast(message: "\(String(describing: viewModel.message))", duration: HRToastDefaultDuration, position: .bottom)
@@ -95,7 +89,6 @@ extension BooksViewController {
         let books = dataSource.select(getSelectedCells(), tableView)
         cart.add(books)
     }
-    
     // to count selected cells
     private func getSelectedCells() -> [UITableViewCell] {
         let cells = tableView.visibleCells

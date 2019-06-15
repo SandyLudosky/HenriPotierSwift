@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class CartInteractor: BusinessLogic {
     var presenter: PresentationLogic?
     var worker = CartDataWorker()

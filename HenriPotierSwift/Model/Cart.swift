@@ -14,6 +14,9 @@ struct Cart {
     var count:Int {
        return items.count
     }
+    init(_ items: [Item]) {
+        self.items = items
+    }
     func getISBNs() -> [String] {
         guard let books = items as? [Book] else { return []}
         let isbns = books.map { book -> String in
@@ -22,17 +25,11 @@ struct Cart {
         }
         return isbns
     }
-    
     mutating func add(_ items:[Item]) {
         self.items = items
     }
-    
     mutating func update(_ items:[Item]) {
         self.selected = items
-        self.items = items
-    }
-    
-    init(_ items: [Item]) {
         self.items = items
     }
 }

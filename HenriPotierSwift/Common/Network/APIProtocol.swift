@@ -15,7 +15,6 @@ public protocol APIProtocol {
     var parameters: [Any]? { get }
     var request: URLRequest? { get }
 }
-
 extension APIProtocol {
     func asURLRequest(queryItems: [URLQueryItem]) throws -> URLRequest? {
         
@@ -23,7 +22,6 @@ extension APIProtocol {
         guard let urlStr = URL(string: baseURL),
         var urlComponents = urlStr.appendingPathComponent(endpoint) as? URL
             else { throw ErrorHandler.encodingError }
-        
         
         if let params = parameters as? [String] {
             let string = params.joined(separator:",")
@@ -33,7 +31,6 @@ extension APIProtocol {
         if let path = path {
              urlComponents = urlComponents.appendingPathComponent(path)
         }
-        
         // encoded URL
         guard let components = URLComponents(url: urlComponents, resolvingAgainstBaseURL: false),
         let url = components.url,

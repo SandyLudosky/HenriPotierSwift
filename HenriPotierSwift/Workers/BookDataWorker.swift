@@ -23,7 +23,6 @@ class BookDataWorker: BaseDataWorker {
             }
         }
     }
-    
     private func getBooks(_ array: [[String : Any]]) -> [Book] {
         let books = array.map { dict -> Book in
             guard let book = try? jsonEncoder(json: dict, type: Book.self) as? Book else { fatalError("") }

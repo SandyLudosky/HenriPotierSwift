@@ -26,15 +26,12 @@ class BookSelectedCell: BaseCell {
             quantityLabel.text = "\(quantity)"
         }
     }
-    
     func setUp() {
         stepper.addTarget(self, action: #selector(changeQuantity(_:)), for: .touchUpInside)
     }
-    
     @objc func changeQuantity(_ sender: UIStepper) {
         quantity = Int(sender.value)
     }
-    
     func configure(with viewModel: BookCellViewModel) {
         setUp()
         self.accessoryType = isChecked ? .checkmark : .none
@@ -47,7 +44,6 @@ class BookSelectedCell: BaseCell {
         quantityLabel.text = "\(quantity)"
     }
 }
-
 extension BookSelectedCell {
     private func setImage(with cover: String) {
         self.cartImageView?.sd_setImage(with: URL(string: cover)) { (image, error, type, url) in

@@ -9,6 +9,7 @@
 import UIKit
 
 class CartCell: BaseCell {
+    static let identifier = "cartCellIdentifier"
     @IBOutlet weak var subTotalValueLabel: UILabel!
     @IBOutlet weak var discountValueLabel: UILabel!
     @IBOutlet weak var totalValueLabel: UILabel!
@@ -16,9 +17,6 @@ class CartCell: BaseCell {
     @IBOutlet weak var subTotal: UILabel!
     @IBOutlet weak var discount: UILabel!
     @IBOutlet weak var total: UILabel!
-    
-    static let identifier = "cartCellIdentifier"
-    
     func configureView() {
         cartCellView.layer.cornerRadius = 10.0
         cartCellView.layer.masksToBounds = true

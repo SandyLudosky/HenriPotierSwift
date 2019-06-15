@@ -10,31 +10,23 @@ import Foundation
 
 //Cart
 struct CartViewModel: ViewModelProtocol {
+    init(with books: [Book], isError: Bool) {
+        self.isError = isError
+        self.message = isError.description
+        self.books = books
+    }
     var isError: Bool
     var message: String?
     var books: [Book] = []
+    var sorted: [Offer] = []
+    var bestOffer: Offer?
+    var offers: [Offer] = []
     var computedOffers: [Offer] = [] {
         didSet {
             sorted = sort()
             bestOffer = getBestOffer()
         }
     }
-    var sorted: [Offer] = []
-    var bestOffer: Offer?
-    var offers: [Offer] = []
-}
-
-extension CartViewModel {
-    init(with books: [Book], isError: Bool) {
-        self.isError = isError
-        self.message = isError.description
-        self.books = books
-    }
-    
-    mutating func calculateCartValue() {
-        computedOffers = calculate()
-    }
-
     //SubTotal before discount
     var subTotal: Double {
         let sum: Double = self.books.reduce(0) {
@@ -42,21 +34,24 @@ extension CartViewModel {
         }
         return sum
     }
-
     //best discount
     var discount: Double {
-       guard let value = bestOffer?.value else { return 0.0 }
+        guard let value = bestOffer?.value else { return 0.0 }
         if subTotal == 0.0 {
             return 0.0
         }
-       return Double(value)
+        return Double(value)
     }
-    
     //total after discount
     var total: Double {
         return subTotal - discount
     }
-    
+    mutating func calculateCartValue() {
+        computedOffers = calculate()
+    }
+}
+
+extension CartViewModel {
     private mutating func calculate() -> [Offer]  {
         let computed = offers.map { offer -> Offer in
             switch offer.discount {
@@ -67,11 +62,9 @@ extension CartViewModel {
         }
         return computed
     }
-    
     private mutating func sort() -> [Offer] {
         return computedOffers.sorted()
     }
-    
      private func getBestOffer() -> Offer {
         guard let best = sorted.first else { return Offer(type: nil, sliceValue: 0, value: 0, discountValue: 0.0) }
         return best

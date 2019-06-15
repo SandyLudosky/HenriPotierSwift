@@ -18,7 +18,6 @@ class Router: RoutingLogic {
         }
     }
 }
-
 extension Router {
     private func goToCart(with response: Any, and identifier: String) {
         viewVC?.performSegue(withIdentifier: identifier, sender: viewVC)

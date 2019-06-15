@@ -10,12 +10,10 @@ import UIKit
 
 class BookCell: BaseCell {
     static let identifier = "bookCellIdentifier"
-  
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var isbnLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    
     func configure(with viewModel: BookCellViewModel) {
         self.accessoryType = isChecked ? .checkmark : .none
         self.titleLabel.text = viewModel.title
@@ -26,7 +24,6 @@ class BookCell: BaseCell {
         self.tintColor = Color.amethyste
     }
 }
-
 extension BookCell {
     private func setImage(with cover: String) {
         self.coverImageView?.sd_setImage(with: URL(string: cover)) { (image, error, type, url) in

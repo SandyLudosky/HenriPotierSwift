@@ -36,19 +36,15 @@ extension Sequence {
         return results ?? []
     }
 }
-
-
 extension Double {
     func format(f: String, with currency: String) -> String {
         return String(format: "\(currency)\(f)", self)
     }
 }
-
 extension String {
     func format(f: String, with currency: String) -> String {
         return String(format: "\(currency)\(f)", self)
     }
-    
     func format(with type: FontType) -> String {
         let font = UIFont(name: "Avenir", size: 14.0)!
         let italicsFont = UIFont(name: "Avenir-BookOblique", size: 14.0)!
@@ -60,15 +56,12 @@ extension String {
         case .bold:  attributedString.addAttribute(NSAttributedString.Key.font, value: boldFont, range: NSMakeRange(7, 4))
         case .italicBold: attributedString.addAttribute(NSAttributedString.Key.font, value: boldItalicsFont, range: NSMakeRange(20, 11))
         }
-        
         return attributedString.string
     }
-    
     func trim() -> String {
         return self.replacingOccurrences(of: "\"", with: "", options: NSString.CompareOptions.literal, range:nil)
     }
 }
-
 extension Array where Element:BaseCell {
     func uncheck() {
         self.forEach { cell in

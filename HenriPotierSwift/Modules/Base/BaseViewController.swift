@@ -15,7 +15,6 @@ class BaseViewController: UIViewController, DisplayLogic {
         configureView()
         setup()
     }
-    
     func setup() {
         let viewController = self
         let presenter = BooksPresenter()
@@ -27,7 +26,6 @@ class BaseViewController: UIViewController, DisplayLogic {
         presenter.viewVC = viewController
         router.viewVC = viewController
     }
-
     func configureView() {}
     func displayResults() {}
     func success<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol { }

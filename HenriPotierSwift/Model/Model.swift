@@ -10,13 +10,10 @@ import Foundation
 
 class Request<Api: APIProtocol> {
     var service : Api
-    
     init(with service: Api) {
         self.service = service
     }
 }
-
-class APIServiceRequest: Request<APIService> {}
 struct Model {
     struct Response<Object: Codable> {
         var result: Object?
@@ -24,6 +21,10 @@ struct Model {
         var message: String?
     }
 }
+
+class APIServiceRequest: Request<APIService> {}
+class AnotherAPIServiceRequest: Request<AnotherAPIService> {}
+
 
 
 

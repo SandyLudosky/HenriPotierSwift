@@ -22,7 +22,6 @@ class CartDataWorker: BaseDataWorker {
             }
         }
     }
-    
     private func getOffers(_ dict: [String : Any]) -> [Offer] {
         guard let array = dict["offers"] as? [[String : Any]] else { return [] }
         let offers = array.map { dict -> Offer in

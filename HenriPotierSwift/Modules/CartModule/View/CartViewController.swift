@@ -21,11 +21,9 @@ class CartViewController: BaseViewController {
         getIsbn()
         displayResults()
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-    
     override func setup() {
         let viewController = self
         let presenter = CartPresenter()
@@ -37,7 +35,6 @@ class CartViewController: BaseViewController {
         presenter.viewVC = viewController
         router.viewVC = viewController
     }
-    
     override func configureView() {
         carTableView = tableView
         dataSource = CartDataSource(cart: cartVM, carTableView)
@@ -47,16 +44,13 @@ class CartViewController: BaseViewController {
         tableView.register(UINib(nibName: "CartCell", bundle: nil), forCellReuseIdentifier: CartCell.identifier)
         tableView.register(UINib(nibName: "BookSelectedCell", bundle: nil), forCellReuseIdentifier: BookSelectedCell.identifier)
     }
-    
     override func displayResults() {
         interactor?.fetch(with: APIServiceRequest(with: .offers(isbns)))
     }
-    
     func getIsbn() {
         guard let booksISBNS = cart?.getISBNs() else { return }
         isbns = booksISBNS
     }
-    
     override func success<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol {
         guard var cartViewModel = viewModel as? CartViewModel,
             let selectedBooks = cart?.items as? [Book] else { return }
@@ -68,7 +62,6 @@ class CartViewController: BaseViewController {
             self.tableView.reloadData()
         }
     }
-    
     override func error<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol {
         if viewModel.isError {
             view.makeToast(message: "\(String(describing: viewModel.message))", duration: HRToastDefaultDuration, position: .bottom)
@@ -83,21 +76,18 @@ extension CartViewController : UITableViewDelegate {
         deleteAction.backgroundColor = Color.amethyste
         return [deleteAction]
     }
-    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.deleteRows(at: [indexPath], with: .top)
         }
     }
 }
-
 //MARK -Navigation
 extension CartViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
     }
 }
-
 //MARK - CartDelegate
 extension CartViewController: CartDelegate {
     func updateCart() {
@@ -106,7 +96,6 @@ extension CartViewController: CartDelegate {
         tableView.reloadData()
     }
 }
-
 //MARK - Private
 extension CartViewController {
     private func deleteAction(at indexPath: IndexPath) {

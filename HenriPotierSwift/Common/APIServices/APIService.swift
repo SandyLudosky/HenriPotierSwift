@@ -12,27 +12,23 @@ public enum APIService: APIProtocol {
     case book
     case offers([String])
     case download(String)
-    
     public var baseURL: String {
         switch self {
         case .book, .offers, .download: return "http://henri-potier.xebia.fr"
         }
     }
-   
     public var endpoint: String {
         switch self {
         case .book, .offers: return "books"
         case .download(let endpoint): return endpoint
         }
     }
-    
     public var path: String? {
         switch self {
         case .book, .download: return nil
         case .offers: return "commercialOffers"
         }
     }
-
     public var parameters: [Any]? {
         switch self {
         case .book, .download: return nil
@@ -40,7 +36,6 @@ public enum APIService: APIProtocol {
         }
     }
 }
-
 extension APIService {
     public var request: URLRequest? {
         let queryItems = [URLQueryItem]()

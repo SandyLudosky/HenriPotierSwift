@@ -11,11 +11,9 @@ import Foundation
 struct CartCellViewModel {
     var cart: CartViewModel?
     var type: Discount = .percentage
-    
     init(with cart: CartViewModel) {
         self.cart = cart
     }
-    
     var subTotalValueString: String {
         guard let subTotal = self.cart?.subTotal else { return "" }
         return subTotal.format(f: "%.2f",with: "€") 

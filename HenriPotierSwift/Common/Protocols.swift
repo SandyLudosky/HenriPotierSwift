@@ -19,17 +19,14 @@ protocol DisplayLogic: class {
     func success<viewModel: ViewModelProtocol>(viewModel: viewModel)
     func error<viewModel: ViewModelProtocol>(viewModel: viewModel)
 }
-
 protocol BusinessLogic: class {
     var presenter: PresentationLogic? { get set }
     func fetch<Api: APIProtocol>(with request: Request<Api>)
 }
-
 protocol PresentationLogic {
     var viewVC: DisplayLogic? { get set }
     func showResults<Object: Codable>(with response: Model.Response<Object>)
 }
-
 protocol RoutingLogic {
     var viewVC: BaseViewController? { get set }
     func pushToView(with identifier: String, and response: Any)

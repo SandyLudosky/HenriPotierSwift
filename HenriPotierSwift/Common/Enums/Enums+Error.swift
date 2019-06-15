@@ -31,8 +31,6 @@ public enum ErrorHandler: Error {
     case jsonParsingFailure
     case invalidURL
     case noNetwork
-
-    
     public var description: String {
         switch self {
         case .unknownError: return NSLocalizedString(L10n.unknown.description, comment: "")

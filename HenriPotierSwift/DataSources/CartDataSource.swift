@@ -12,7 +12,6 @@ import UIKit
 protocol CartDelegate {
     func updateCart()
 }
-
 class CartDataSource: NSObject {
     var cartVM: CartViewModel?
     var tableView: UITableView!
@@ -27,7 +26,6 @@ class CartDataSource: NSObject {
         self.cartVM = cart
     }
 }
-
 // MARK: - UITableDataSource
 extension CartDataSource: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -54,7 +52,6 @@ extension CartDataSource: UITableViewDataSource {
         return UITableViewCell()
     }
 }
-
 extension CartDataSource: CartValueDelegate {
     func updateCart(_ cell: BookSelectedCell, with qty: Int, and price: Double) {
         guard let indexPath = tableView.indexPath(for: cell),

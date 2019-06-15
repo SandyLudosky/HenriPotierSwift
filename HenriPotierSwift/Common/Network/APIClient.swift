@@ -12,7 +12,6 @@ class APIClient<T: APIProtocol> {
     public typealias ResponseHandler = (Response<Any>) -> Void
     public typealias ResultHandler = (ResultObject<Any>) -> Void
     func get(with service: T, block: @escaping ResponseHandler) {
-        print(service.request?.url)
         let task = runTask(with: service) { response in
             self.parseResponse(response, completion: block)
         }
@@ -25,7 +24,6 @@ class APIClient<T: APIProtocol> {
         task?.resume()
     }
 }
-
 private extension APIClient {
     private func runTask(with service: APIProtocol, completion: @escaping ResultHandler) -> URLSessionDataTask? {
         guard let request = service.request else {
@@ -45,11 +43,8 @@ private extension APIClient {
                     }
                     completion(.success(data))
                 case 300 ... 399 : print("error 300")
-                case 400...499:
-                    completion(.failure(.responseFailure(.clientError, statusCode: httpResponse.statusCode)))
-                case 500 ... 599 :
-                    completion(.failure(.responseFailure(.serverError, statusCode: httpResponse.statusCode)))
-               
+                case 400...499: completion(.failure(.responseFailure(.clientError, statusCode: httpResponse.statusCode)))
+                case 500 ... 599 : completion(.failure(.responseFailure(.serverError, statusCode: httpResponse.statusCode)))
                 default : break
                 }
             }

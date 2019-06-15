@@ -13,7 +13,6 @@ class Book: Item, Codable {
     let cover: String?
     let synopsis: [String]?
     var bestRate: Double?
-    
     enum CodingKeys: String, CodingKey {
         case isbn,title, price, cover, synopsis
     }
