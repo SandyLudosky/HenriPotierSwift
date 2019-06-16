@@ -79,8 +79,8 @@ extension Offer {
     private func slice(with total: Double, and value: (sliceValue: Int, value: Int)) -> Offer {
         var minus = 0.0
         if total >= Double(value.sliceValue) {
-            let times = total / Double(value.sliceValue)
-            minus = times * Double(value.value)
+            let times = Int(total) / value.sliceValue
+            minus = Double(times) * Double(value.value)
         }
         let discount = Double(total - minus)
         return Offer(type: self.type, sliceValue: self.sliceValue, value: Int(minus), discountValue: discount)

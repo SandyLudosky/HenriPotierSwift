@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2C74AF4AF7B1849C73F16DA3C5DC444A"
+               BlueprintIdentifier = "6A502D6FAE7C045D9F186C3DB298E225"
                BuildableName = "Reachability.framework"
                BlueprintName = "ReachabilitySwift"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2C74AF4AF7B1849C73F16DA3C5DC444A"
+            BlueprintIdentifier = "6A502D6FAE7C045D9F186C3DB298E225"
             BuildableName = "Reachability.framework"
             BlueprintName = "ReachabilitySwift"
             ReferencedContainer = "container:Pods.xcodeproj">

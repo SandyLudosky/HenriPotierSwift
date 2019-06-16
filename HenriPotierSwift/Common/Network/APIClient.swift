@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ReactiveSwift
 
 class APIClient<T: APIProtocol> {
     public typealias ResponseHandler = (Response<Any>) -> Void

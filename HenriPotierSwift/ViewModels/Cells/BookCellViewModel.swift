@@ -16,7 +16,7 @@ class CellViewModel {
     var priceDouble: Double?
     init(with item: Item) {
         self.title = item.title
-        self.price = Double(item.price).format(f: "%.2f",with: "€")
+        self.price = Double(item.unitPrice).format(f: "%.2f",with: "€")
         self.priceDouble = item.unitPrice
     }
 }
