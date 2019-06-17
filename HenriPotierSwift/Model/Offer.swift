@@ -70,11 +70,11 @@ extension Offer: Comparable {
 extension Offer {
     private func percentage(with total: Double, and value: Int) -> Offer {
         let discount = total - (total * Double(value) / 100)
-        return Offer(type: self.type, sliceValue: 0, value: self.value, discountValue: discount)
+        return Offer(type: self.type, sliceValue: 0, value: self.value, discountValue: total == 0 ? 0.0 : discount)
     }
     private func minus(with total: Double, and value: Int) -> Offer {
         let discount = total - Double(value)
-        return Offer(type: self.type, sliceValue: 0, value: self.value, discountValue: discount)
+        return Offer(type: self.type, sliceValue: 0, value: self.value, discountValue: total == 0 ? 0.0 : discount)
     }
     private func slice(with total: Double, and value: (sliceValue: Int, value: Int)) -> Offer {
         var minus = 0.0
@@ -83,6 +83,6 @@ extension Offer {
             minus = Double(times) * Double(value.value)
         }
         let discount = Double(total - minus)
-        return Offer(type: self.type, sliceValue: self.sliceValue, value: Int(minus), discountValue: discount)
+        return Offer(type: self.type, sliceValue: self.sliceValue, value: Int(minus), discountValue: total == 0 ? 0.0 : discount)
     }
 }

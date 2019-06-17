@@ -9,8 +9,8 @@
 import Foundation
 
 struct Cart {
-    var items:[Item] = []
     var selected: [Item] = []
+    var items:[Item] = []
     var count:Int {
        return items.count
     }

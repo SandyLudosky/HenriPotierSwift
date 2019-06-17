@@ -29,7 +29,7 @@ protocol PresentationLogic {
 }
 protocol RoutingLogic {
     var viewVC: BaseViewController? { get set }
-    func pushToView(with identifier: String, and response: Any)
+    func pushToView(with identifier: SegueIdentifier, and response: Any)
 }
 
 

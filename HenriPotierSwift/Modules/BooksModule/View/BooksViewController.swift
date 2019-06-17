@@ -13,7 +13,7 @@ class BooksViewController: BaseViewController {
     var cart = Cart([])
     let button = CartButton()
     @IBAction func addToCartAction(_ sender: UIBarButtonItem) {
-       addToCart()
+        addToCart()
     }
     var dataSource = ItemsDataSource(items: [])
     override func viewDidLoad() {
@@ -21,10 +21,10 @@ class BooksViewController: BaseViewController {
         displayResults()
     }
     override func configureView() {
-       tableView.dataSource = dataSource
-       tableView.delegate = self
-       tableView.register(UINib(nibName: "BookCell", bundle: nil), forCellReuseIdentifier: BookCell.identifier)
-       configureCartButton()
+        tableView.dataSource = dataSource
+        tableView.delegate = self
+        tableView.register(UINib(nibName: "BookCell", bundle: nil), forCellReuseIdentifier: BookCell.identifier)
+        configureCartButton()
     }
     func configureCartButton() {
         guard let image = UIImage(named: "shopping-bag") else { return }
@@ -37,14 +37,14 @@ class BooksViewController: BaseViewController {
         addToCart()
         let books = dataSource.select(getSelectedCells(), tableView)
         cart.update(books)
-        router?.pushToView(with: "goToCart", and: cart as Any)
+        router?.pushToView(with: .cart, and: cart as Any)
     }
     override func displayResults() {
         interactor?.fetch(with: APIServiceRequest(with: .book))
     }
     override func success<viewModel>(viewModel: viewModel) where viewModel : ViewModelProtocol {
         guard let booksViewModel = viewModel as? BooksViewModel,
-              let books = booksViewModel.items else { return }
+            let books = booksViewModel.items else { return }
         self.dataSource.update(with: books)
         self.tableView.reloadData()
     }
@@ -57,7 +57,7 @@ class BooksViewController: BaseViewController {
 
 //MARK - UITableViewDelegate
 extension BooksViewController: UITableViewDelegate  {
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? BookCell else { return }
         cell.toggle()
         tableView.reloadData()

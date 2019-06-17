@@ -20,7 +20,7 @@ extension APIProtocol {
         
         //baseURL + endpoints
         guard let urlStr = URL(string: baseURL),
-        var urlComponents = urlStr.appendingPathComponent(endpoint) as? URL
+                  var urlComponents = urlStr.appendingPathComponent(endpoint) as? URL
             else { throw ErrorHandler.encodingError }
         
         if let params = parameters as? [String] {

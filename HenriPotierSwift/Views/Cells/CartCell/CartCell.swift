@@ -22,9 +22,9 @@ class CartCell: BaseCell {
         cartCellView.layer.masksToBounds = true
         cartCellView.layer.borderWidth = 1
         cartCellView.layer.borderColor = UIColor.gray.cgColor
-        subTotal.text = L10n.subTotal.description
-        discount.text = L10n.discount.description
-        total.text = L10n.total.description
+        subTotal.text = L10n.Cart.subTotal.description
+        discount.text = L10n.Cart.discount.description
+        total.text = L10n.Cart.total.description
     }
     func configure(with vm: CartCellViewModel) {
         subTotalValueLabel.text = vm.subTotalValueString

@@ -9,12 +9,20 @@
 import Foundation
 import UIKit
 
+enum SegueIdentifier {
+    case cart
+    var string : String {
+        switch self {
+        case .cart: return "goToCart"
+        }
+    }
+   
+}
 class Router: RoutingLogic {
     var viewVC: BaseViewController?
-    func pushToView(with identifier: String, and response: Any) {
+    func pushToView(with identifier: SegueIdentifier, and response: Any) {
         switch identifier {
-        case "goToCart": goToCart(with: response, and: identifier)
-        default: break
+        case .cart: goToCart(with: response, and: identifier.string)
         }
     }
 }

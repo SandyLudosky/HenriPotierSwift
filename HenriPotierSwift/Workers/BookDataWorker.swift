@@ -10,11 +10,11 @@ import Foundation
 
 class BookDataWorker: BaseDataWorker {
     override func get(for service: APIService, completion: @escaping Handler) {
-        client.get(with: service) { result in
+        client.get(with: service) { [weak self] result in
             switch result {
             case .array(let results):
                 guard let collection = results as? [[String : Any]],
-                let books = self.getBooks(collection) as? [Book] else { return }
+                    let books = self?.getBooks(collection) else { return }
                 DispatchQueue.main.async {
                     completion(.success(books))
                 }

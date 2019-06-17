@@ -20,6 +20,7 @@ struct CartCellViewModel {
     }
     var discountValueString: String {
         guard let discount =  Double(self.cart?.bestOffer?.value ?? 0) as? Double else { return "" }
+         if subTotalValueString == "€0.00" { return "0.00"}
         if cart?.bestOffer?.discount == .percentage {
             return "- \(String(describing: self.cart?.bestOffer?.value)) %" + discount.format(f: "%.2f",with: "")
         }

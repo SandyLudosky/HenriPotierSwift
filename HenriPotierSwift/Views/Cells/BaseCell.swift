@@ -16,7 +16,7 @@ class BaseCell: UITableViewCell {
     }
     
     func toggle() {
-        isChecked = !isChecked
+        isChecked.toggle()
     }
     
     func unCheck() {

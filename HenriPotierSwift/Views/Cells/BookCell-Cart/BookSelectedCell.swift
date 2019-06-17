@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CartValueDelegate {
+protocol CartValueDelegate: class {
     func updateCart(_ cell: BookSelectedCell, with qty: Int, and price: Double)
 }
 class BookSelectedCell: BaseCell {
@@ -18,12 +18,12 @@ class BookSelectedCell: BaseCell {
     @IBOutlet weak var cartPriceLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var stepper: UIStepper!
-    var delegate: CartValueDelegate?
+    weak var delegate: CartValueDelegate?
     var price: Double = 0.0
     var quantity: Int = 1 {
         didSet {
             delegate?.updateCart(self, with: quantity, and: price)
-            quantityLabel.text = "\(quantity)"
+            quantityLabel.text = quantity < 1 ? "" : "\(quantity)"
         }
     }
     func setUp() {

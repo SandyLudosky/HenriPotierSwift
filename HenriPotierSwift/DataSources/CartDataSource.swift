@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-protocol CartDelegate {
+protocol CartDelegate: class {
     func updateCart()
 }
 class CartDataSource: NSObject {
     var cartVM: CartViewModel?
     var tableView: UITableView!
-    var delegate: CartDelegate?
+    weak var delegate: CartDelegate?
     init(cart: CartViewModel?,_ tableView: UITableView) {
         self.cartVM = cart
         self.tableView = tableView

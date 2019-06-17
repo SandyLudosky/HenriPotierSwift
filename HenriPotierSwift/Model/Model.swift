@@ -9,16 +9,16 @@
 import Foundation
 
 class Request<Api: APIProtocol> {
-    var service : Api
+    let service : Api
     init(with service: Api) {
         self.service = service
     }
 }
 struct Model {
     struct Response<Object: Codable> {
-        var result: Object?
-        var isError: Bool
-        var message: String?
+        let result: Object?
+        let isError: Bool
+        let message: String?
     }
 }
 

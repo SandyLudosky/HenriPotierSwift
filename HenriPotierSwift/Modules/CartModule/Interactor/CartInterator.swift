@@ -13,14 +13,14 @@ class CartInteractor: BusinessLogic {
     var worker = CartDataWorker()
     func fetch<Api>(with request: Request<Api>) where Api : APIProtocol {
         guard let apiService = request.service as? APIService else { return }
-        worker.get(for: apiService, completion: { results in
+        worker.get(for: apiService, completion: { [weak self]  results in
             switch results {
             case .success(let objects):
                 guard let offers = objects as? [Offer] else { return }
-                self.presenter?.showResults(with: Model.Response(result: offers, isError: false, message: nil))
+                self?.presenter?.showResults(with: Model.Response(result: offers, isError: false, message: nil))
             case .failure(let reason):
-                let items = [Offer]() // REFACTO !!!!
-                self.presenter?.showResults(with: Model.Response(result: items, isError: true, message: reason.description))
+                let items = [Offer]() 
+                self?.presenter?.showResults(with: Model.Response(result: items, isError: true, message: reason.description))
             }
         })
     }

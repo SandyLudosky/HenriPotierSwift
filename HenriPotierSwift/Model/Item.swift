@@ -9,7 +9,7 @@
 import Foundation
 
 class Item {
-    var title: String?
+    let title: String?
     var unitPrice: Double = 0.0
     var price: Double = 0.0 // to compute with quantity if > 1
     init(title: String, unitPrice: Double) {

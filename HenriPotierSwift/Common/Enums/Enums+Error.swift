@@ -33,17 +33,17 @@ public enum ErrorHandler: Error {
     case noNetwork
     public var description: String {
         switch self {
-        case .unknownError: return NSLocalizedString(L10n.unknown.description, comment: "")
-        case .itemNotFound:  return NSLocalizedString(L10n.notFound.description, comment: "")
-        case .itemInvalid: return NSLocalizedString(L10n.itemInvalid.description, comment: "")
-        case .invalidData: return NSLocalizedString(L10n.invalidData.description, comment: "")
-        case .responseUnsuccessful: return NSLocalizedString(L10n.responsUnsucessful.description, comment: "")
+        case .unknownError: return NSLocalizedString(L10n.Error.unknown.description, comment: "")
+        case .itemNotFound:  return NSLocalizedString(L10n.Error.notFound.description, comment: "")
+        case .itemInvalid: return NSLocalizedString(L10n.Error.itemInvalid.description, comment: "")
+        case .invalidData: return NSLocalizedString(L10n.Error.invalidData.description, comment: "")
+        case .responseUnsuccessful: return NSLocalizedString(L10n.Error.responsUnsucessful.description, comment: "")
         case .responseFailure(let statusCode, let code): return NSLocalizedString("\(statusCode) - status code: \(code)", comment: "")
-        case .jsonParsingFailure: return NSLocalizedString(L10n.jsonParsingFailure.description, comment: "")
-        case .invalidURL: return NSLocalizedString(L10n.invalidURL.description, comment: "")
-        case .encodingError: return NSLocalizedString(L10n.encodingError.description, comment: "")
-        case .invalidRequest: return NSLocalizedString(L10n.invalidRequest.description, comment: "")
-        case .noNetwork: return NSLocalizedString(L10n.noNetwork.description, comment: "")
+        case .jsonParsingFailure: return NSLocalizedString(L10n.Error.jsonParsingFailure.description, comment: "")
+        case .invalidURL: return NSLocalizedString(L10n.Error.invalidURL.description, comment: "")
+        case .encodingError: return NSLocalizedString(L10n.Error.encodingError.description, comment: "")
+        case .invalidRequest: return NSLocalizedString(L10n.Error.invalidRequest.description, comment: "")
+        case .noNetwork: return NSLocalizedString(L10n.Error.noNetwork.description, comment: "")
         }
     }
 }
